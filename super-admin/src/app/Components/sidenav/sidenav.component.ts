@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
-  opened = true;
+  opened = false;
 }
