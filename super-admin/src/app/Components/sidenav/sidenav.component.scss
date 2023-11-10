@@ -25,3 +25,12 @@ mat-sidenav{
 .quick a:hover{
     text-decoration: underline 1px solid;
 }
+
+mat-icon  {
+    font-size:20px;
+    margin-right:5px ;
+  }
+mat-icon span{
+    font-size: 8px;
+    margin-bottom: 5px;
+}
