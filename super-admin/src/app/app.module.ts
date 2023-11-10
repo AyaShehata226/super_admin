@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from './Components/sidenav/sidenav.component';
-
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +17,10 @@ import { SidenavComponent } from './Components/sidenav/sidenav.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    FormsModule,
+    MatSidenavModule,
+    MatToolbarModule
+
 
   ],
   providers: [],
