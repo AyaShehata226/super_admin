@@ -48,11 +48,17 @@
       </a>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content class="text-danger">
-    <mat-toolbar color="primary">
-      <p class="mt-4 menu" (click)="opened = !opened">
+  <mat-sidenav-content >
+    <mat-toolbar class="">
+      <p class=" w-50 mt-4 menu" (click)="opened = !opened">
         <mat-icon>menu</mat-icon>
       </p>
+      <span  class=" w-50 d-flex justify-content-end">
+        <div  class="mt-2">
+          <a href="#"><mat-icon class="me-4">person</mat-icon></a>
+          <a href="#" class="me-2"><mat-icon>notifications</mat-icon></a>
+        </div>
+      </span>
     </mat-toolbar>
   </mat-sidenav-content>
 </mat-sidenav-container>
