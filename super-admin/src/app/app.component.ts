@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'super-admin';
+  opened :boolean = false;
+  changeValue (newVlaue:boolean){
+    this.opened = newVlaue;
+    console.log(this.opened);
+  }
 }

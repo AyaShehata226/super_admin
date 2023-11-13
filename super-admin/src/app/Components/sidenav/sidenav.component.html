@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container class="" style="background-color: white;">
   <mat-sidenav [(opened)]="opened" mode="side">
     <img class="imgLogo mt-3 ms-4 mb-2" src="assets/logo-04.png" alt="logo" />
     <hr class="w-75 ms-3" />
@@ -10,11 +10,23 @@
         ><mat-icon>home</mat-icon><span class="ms-1">Dashboard</span></a
       >
       <a href="#"
+        ><mat-icon>bar_chart</mat-icon><span class="ms-1">Statistics</span></a
+      >
+      <a href="#"
+        ><mat-icon>group</mat-icon
+        ><span class="ms-1">Customers</span></a
+      >
+      <a href="#"
         ><mat-icon>add_shopping_cart</mat-icon
         ><span class="ms-1">Orders</span></a
       >
       <a href="#"
-        ><mat-icon>bar_chart</mat-icon><span class="ms-1">Statistics</span></a
+        ><mat-icon>add_shopping_cart</mat-icon
+        ><span class="ms-1">Products</span></a
+      >
+      <a href="#"
+        ><mat-icon>store</mat-icon
+        ><span class="ms-1">Retailers</span></a
       >
     </div>
     <hr class="w-75 ms-3" />
@@ -48,17 +60,4 @@
       </a>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content >
-    <mat-toolbar class="">
-      <p class=" w-50 mt-4 menu" (click)="opened = !opened">
-        <mat-icon>menu</mat-icon>
-      </p>
-      <span  class=" w-50 d-flex justify-content-end">
-        <div  class="mt-2">
-          <a href="#"><mat-icon class="me-4">person</mat-icon></a>
-          <a href="#" class="me-2"><mat-icon>notifications</mat-icon></a>
-        </div>
-      </span>
-    </mat-toolbar>
-  </mat-sidenav-content>
 </mat-sidenav-container>

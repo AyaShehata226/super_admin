@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
-  opened = false;
+@Input() opened = false;
 }
