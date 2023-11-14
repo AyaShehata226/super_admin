@@ -1,18 +1,88 @@
-<app-toolbar (toggleSidebarEvent)="changeValue($event)"></app-toolbar>
-<div class="overflow-hidden h-100">
-    <div class="row">
-      <div class="col-md-2">
-        <app-sidenav [opened]="opened"></app-sidenav>
-      </div>
-      <div class="col-md-10 mt-5">
-        <app-cards></app-cards>
-        <div class="row">
-          <app-pie-chart></app-pie-chart>
-        </div>
-      </div>
+<mat-toolbar>
+  <p class="w-50 mt-4 menu" (click)="opened = !opened">
+    <mat-icon>menu</mat-icon>
+  </p>
+  <span class="w-50 d-flex justify-content-end">
+    <div class="mt-2">
+      <a href="#"><mat-icon class="me-4">person</mat-icon></a>
+      <a href="#" class="me-2"><mat-icon>notifications</mat-icon></a>
     </div>
-  </div>
-  <app-column-chart></app-column-chart>
-
-
-
+  </span>
+</mat-toolbar>
+<mat-sidenav-container style="background-color: white">
+  <mat-sidenav [(opened)]="opened" mode="side">
+    <img class="imgLogo mt-3 ms-4 mb-2" src="assets/logo-04.png" alt="logo" />
+    <hr class="w-75 ms-3" />
+    <span class="ms-3" style="font-size: 10px; color: rgb(180, 179, 179)"
+      >Quick access</span
+    >
+    <mat-list>
+      <mat-list-item class="quick">
+        <a routerLink="/dashboard" routerLinkActive="classActive"
+          ><mat-icon>home</mat-icon><span class="ms-1">Dashboard</span></a
+        >
+      </mat-list-item>
+      <mat-list-item class="quick">
+        <a routerLink="/statistics" routerLinkActive="classActive"
+          ><mat-icon>bar_chart</mat-icon><span class="ms-1">Statistics</span></a
+        >
+      </mat-list-item>
+      <mat-list-item class="quick">
+        <a routerLink="/customers" routerLinkActive="classActive"
+          ><mat-icon>group</mat-icon><span class="ms-1">Customers</span></a
+        >
+      </mat-list-item>
+      <mat-list-item class="quick">
+        <a routerLink="/products" routerLinkActive="classActive"
+          ><mat-icon>add_shopping_cart</mat-icon
+          ><span class="ms-1">Products</span></a
+        >
+      </mat-list-item>
+      <mat-list-item class="quick">
+        <a routerLink="/retailers" routerLinkActive="classActive"
+          ><mat-icon>store</mat-icon><span class="ms-1">Retailers</span></a
+        >
+      </mat-list-item>
+      <hr class="w-75 ms-3" />
+      <span class="ms-3" style="font-size: 10px; color: rgb(180, 179, 179)"
+        >MY Account</span
+      >
+      <mat-list-item class="quick">
+        <a href="#"
+          ><mat-icon>account_balance_wallet</mat-icon
+          ><span class="ms-1">Wallet</span></a
+        >
+      </mat-list-item>
+      <mat-list-item class="quick">
+        <a href="#"
+          ><mat-icon>person</mat-icon><span class="ms-1">Profile</span></a
+        >
+      </mat-list-item>
+      <mat-list-item class="quick">
+        <a href="#"
+          ><mat-icon>calendar_today</mat-icon
+          ><span class="ms-1">Agenda</span></a
+        >
+      </mat-list-item>
+      <hr class="w-75 ms-3" />
+      <mat-list-item class="quick">
+        <a href="#"
+          ><mat-icon>forum</mat-icon><span class="ms-1">Community</span></a
+        >
+      </mat-list-item>
+      <mat-list-item class="quick">
+        <a href="#"><mat-icon>help</mat-icon><span class="ms-1">Q & A</span></a>
+      </mat-list-item>
+      <hr class="w-75 ms-3" />
+      <mat-list-item class="quick">
+        <a href="#">
+          <mat-icon>exit_to_app</mat-icon>
+          <span class="ms-1">Log Out</span>
+        </a>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
