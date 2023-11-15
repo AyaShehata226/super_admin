@@ -43,7 +43,7 @@ import { StatisticsComponent } from './Components/statistics/statistics.componen
     MatToolbarModule,
     MatIconModule,
     CanvasJSAngularChartsModule,
-    MatListModule
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

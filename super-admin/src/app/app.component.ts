@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'super-admin';
-  opened= false;
+  opened= true;
   
 }
