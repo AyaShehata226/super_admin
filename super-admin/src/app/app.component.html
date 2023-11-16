@@ -1,15 +1,4 @@
 <div class="overflow-hidden">
-  <mat-toolbar>
-    <p class="w-50 mt-4 menu" (click)="opened =!opened">
-      <mat-icon>menu</mat-icon>
-    </p>
-    <span class="w-50 d-flex justify-content-end">
-      <div class="mt-2">
-        <a href="#"><mat-icon class="me-4">person</mat-icon></a>
-        <a href="#" class="me-2"><mat-icon>notifications</mat-icon></a>
-      </div>
-    </span>
-  </mat-toolbar>
   <mat-sidenav-container style="background-color: white">
     <mat-sidenav [(opened)]="opened" mode="side">
       <img class="imgLogo mt-3 ms-4 mb-2" src="assets/logo-04.png" alt="logo" />
@@ -89,6 +78,17 @@
       </mat-list>
     </mat-sidenav>
     <mat-sidenav-content>
+      <mat-toolbar>
+        <p class="w-50 mt-4 menu" (click)="opened =!opened">
+          <mat-icon>menu</mat-icon>
+        </p>
+        <span class="w-50 d-flex justify-content-end">
+          <div class="mt-2">
+            <a href="#"><mat-icon class="me-4">person</mat-icon></a>
+            <a href="#" class="me-2"><mat-icon>notifications</mat-icon></a>
+          </div>
+        </span>
+      </mat-toolbar>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>  
