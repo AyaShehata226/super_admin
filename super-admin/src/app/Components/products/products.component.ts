@@ -20,23 +20,15 @@ constructor(public prdService:ProductsService ,private toastr:ToastrService){
   
 }
 ngOnInit(): void {
-  // this.prdService.getAllProducts().subscribe({
-  //   next:(data)=>{
-  //     console.log(data);
-  //     this.products=data;
-  //   },
-  //   error:(err)=>{
-  //     console.log(err); 
-  //   }
-  // })
   this.loadProducts();
-
 }
 loadProducts():void{
   this.prdService.getAllProducts().subscribe({
     next: (data) => {
       this.products = data;
       this.updateDisplayedProducts();
+      console.log(this.products);
+      
     },
     error: (err) => {
       console.log(err);

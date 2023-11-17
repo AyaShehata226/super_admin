@@ -49,7 +49,7 @@
   </div>
   <div class="row table-responsive-md table-responsive-sm m-5">
     <div class="d-flex justify-content-center">
-      <table class="table table-hover border rounded-3 w-100">
+      <table class="table table-hover border rounded-3 w-100 ">
         <thead>
           <tr class="">
             <th scope="col"> Id</th>
@@ -70,7 +70,7 @@
             <td>{{ prd.quantity }}</td>
             <td>{{ prd.brand }}</td>
             <td>{{ prd.category }}</td>
-            <td><img src="{{ prd.thumbnail }}" class="w-25 h-25 rounded" /></td>
+            <td><img src="{{ prd.thumbnail }}" class="w-25 h-25 rounded-circle" /></td>
             <td>
               <button (click)="deleteProduct(prd.id)" type="button" class="btn text-danger">
                 <mat-icon>delete</mat-icon>
