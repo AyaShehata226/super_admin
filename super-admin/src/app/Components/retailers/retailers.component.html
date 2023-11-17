@@ -26,104 +26,22 @@
           <table class="table table-hover border rounded-3">
             <thead>
               <tr>
-                <th scope="col">Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Password</th>
+                <th scope="col">phone</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Aya shehata</td>
-                <td>ayaaaaaaaaaaaaaagmail.com</td>
-                <td>mdo</td>
+              <tr *ngFor="let ret of Retailers">
+                <td>{{ret.name}}</td>
+                <td>{{ret.email}}</td>
+                <td>{{ret.password}}</td>
+                <td>{{ret.phone}}</td>
                 <td>
                   <button type="button" class="btn text-danger">
                     <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>fat</td>
-                <td>
-                  <button type="button" class="btn text-danger">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="1">Larry the Bird</td>
-                <td>twitter</td>
-                <td>twitter</td>
-    
-                <td>
-                  <button type="button" class="btn text-danger">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="1">Larry the Bird</td>
-                <td>twitter</td>
-                <td>twitter</td>
-    
-                <td>
-                  <button type="button" class="btn text-danger">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="1">Larry the Bird</td>
-                <td>twitter</td>
-                <td>twitter</td>
-    
-                <td>
-                  <button type="button" class="btn text-danger">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="1">Larry the Bird</td>
-                <td>twitter</td>
-                <td>twitter</td>
-    
-                <td>
-                  <button type="button" class="btn text-danger">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="1">Larry the Bird</td>
-                <td>twitter</td>
-                <td>twitter</td>
-    
-                <td>
-                  <button type="button" class="btn text-danger">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="1">Larry the Bird</td>
-                <td>twitter</td>
-                <td>twitter</td>
-                <td>
-                  <button type="button" class="btn text-danger">
-                    <mat-icon><mat-icon>delete</mat-icon></mat-icon>
                   </button>
                 </td>
               </tr>

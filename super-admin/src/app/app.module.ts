@@ -19,6 +19,8 @@ import { ProductsComponent } from './Components/products/products.component';
 import { RetailersComponent } from './Components/retailers/retailers.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { StatisticsComponent } from './Components/statistics/statistics.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,15 @@ import { StatisticsComponent } from './Components/statistics/statistics.componen
     MatIconModule,
     CanvasJSAngularChartsModule,
     MatListModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+    }
+    ),
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
