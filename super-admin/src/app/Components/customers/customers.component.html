@@ -12,12 +12,15 @@
           placeholder="Email for customer"
           aria-label="Example input"
           aria-describedby="button-addon1"
+          [(ngModel)]="customerEmail"
         />
         <button
           class="btn btn-success"
           type="button"
           id="button-addon1"
           data-mdb-ripple-color="dark"
+          (click)="searchCustomer()"
+
         >
           search
         </button>

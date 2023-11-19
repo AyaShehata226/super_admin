@@ -44,8 +44,9 @@ onPageChange(page: number): void {
   this.updateDisplayedProducts();
 }
 calculateTotalPages(): void {
-  this.totalPages = Math.ceil(this.products.length / this.pageSize);
+  this.totalPages = Math.ceil(this.products.length / this.pageSize);  
 }
+
 searchProductId(): void {
   // // Check if productId is not empty
   // if (this.productId!==0) {
@@ -68,14 +69,17 @@ searchProductCat(): void {
   if (this.productCat.trim()!=="") {
     this.prdService.getProductBycategory(this.productCat).subscribe({
       next:(data)=>{
+        // this.selectedProducts=data
         console.log(data);
         console.log(this.productCat);
-        // this.selectedProducts=data
       },
       error:(err)=>{
         console.log(err); 
       }
   });
+  }
+  else{
+    this.loadProducts()
   }
 }
 
@@ -88,7 +92,6 @@ deleteProduct(productId: number): void {
     (error) => {
       this.toastr.error(`Error deleting product with ID ${productId}`, 'Error');
       console.error(`Error deleting product with ID ${productId}`, error);
-      // alert("error")
     }
   );
 }

@@ -12,4 +12,8 @@ export class CustomersService {
   getAllCustomers():Observable<Customers[]>{
     return this.httpclient.get<Customers[]>(`${environment.BaseApiURL}/customer`)
   }
+
+  getCustomerByEmail(email:string):Observable<Customers>{
+    return this.httpclient.get<Customers>(`${environment.BaseApiURL}/customer/${email}`)
+  }
 }

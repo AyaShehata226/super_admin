@@ -8,7 +8,8 @@ import { CustomersService } from 'src/app/Services/customers/customers.service';
   styleUrls: ['./customers.component.scss']
 })
 export class CustomersComponent implements OnInit {
-  customers:Customers[]=[]
+  customers:Customers[]=[];
+  customerEmail:string="";
   constructor(public customersSer:CustomersService){}
   
   ngOnInit(): void {
@@ -22,4 +23,24 @@ export class CustomersComponent implements OnInit {
       }
     })
   }
+
+  searchCustomer(): void {
+    // Check if productId is not empty
+    if (this.customerEmail.trim()!=="") {
+      this.customersSer.getCustomerByEmail(this.customerEmail).subscribe({
+        next:(data)=>{
+          // this.selectedProducts=data
+          console.log(data);
+          console.log(this.customerEmail);
+        },
+        error:(err)=>{
+          console.log(err); 
+        }
+    });
+    }
+    // else{
+    //   this.loadCustomer()
+    // }
+  }
+  
 }
