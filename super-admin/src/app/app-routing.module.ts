@@ -7,6 +7,8 @@ import { RetailersComponent } from './Components/retailers/retailers.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { StatisticsComponent } from './Components/statistics/statistics.component';
+import { RegisterComponent } from './Components/Register/register/register.component';
+import { LoginComponent } from './Components/Login/login/login.component';
 
 const routes: Routes = [
   {path:'' , redirectTo:'/dashboard' , pathMatch: 'full'},
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'orders' , component:OrdersComponent , title: 'orders page'},
   {path: 'retailers' , component:RetailersComponent , title: 'retailers page'},
   {path: 'statistics' , component:StatisticsComponent , title: 'statistics page'},
+  {path: 'singup', component:RegisterComponent , title: 'singup page'},
+  {path: 'login', component:LoginComponent , title: 'login page'},
   {path:'**' , component:NotFoundComponent , title: 'notfound'}
 ];
 

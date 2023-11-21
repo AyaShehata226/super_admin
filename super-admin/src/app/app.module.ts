@@ -21,6 +21,9 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { StatisticsComponent } from './Components/statistics/statistics.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { RegisterComponent } from './Components/Register/register/register.component';
+import { LoginComponent } from './Components/Login/login/login.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
     RetailersComponent,
     NotFoundComponent,
     StatisticsComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,7 @@ import { ToastrModule } from 'ngx-toastr';
       preventDuplicates: true,
     }
     ),
+    NgApexchartsModule
   ],
   
   providers: [],

@@ -13,7 +13,7 @@ export class ProductsService {
   getAllProducts():Observable<IProduct[]>{
     return this.httpclient.get<IProduct[]>(`${environment.BaseApiURL}/product/all`)
   }
-  getProductById(productId:number):Observable<IProduct>{
+  getProductById(productId:string):Observable<IProduct>{
     return this.httpclient.get<IProduct>(`${environment.BaseApiURL}/product/${productId}`)
   }
   getProductBycategory(category:string):Observable<IProduct>{

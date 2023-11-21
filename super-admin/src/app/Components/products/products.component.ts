@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProductsComponent implements OnInit {
   products:IProduct[]=[];
-  productId:number =0;
+  productId:string ="";
   productCat:string = "";
   pageSize:number =20;
   currentPage:number =1;
@@ -27,13 +27,15 @@ loadProducts():void{
     next: (data) => {
       this.products = data;
       this.updateDisplayedProducts();
-      console.log(this.products);
+      console.log(this.selectedProducts);
       
     },
     error: (err) => {
       console.log(err);
     }
   });
+
+  
 }
 updateDisplayedProducts():void{
   const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -48,20 +50,39 @@ calculateTotalPages(): void {
 }
 
 searchProductId(): void {
-  // // Check if productId is not empty
-  // if (this.productId!==0) {
-  //   this.prdService.getProductById(this.productId).subscribe({
-  //     next:(data)=>{
+  // Check if productId is not empty
+  if (this.productId!=="") {
+    this.prdService.getProductById(this.productId).subscribe({
+      next:(data)=>{
+        console.log(data);
+        console.log(this.productId);
+        
+        // this.selectedProductWithId=data
+      },
+      error:(err)=>{
+        console.log(err); 
+      }
+  });
+  }
+  // this.prdService.getAllProducts().subscribe({
+  //   next: (data) => {
+  //     if (data) {
   //       console.log(data);
   //       console.log(this.productId);
-        
-  //       // this.selectedProductWithId=data
-  //     },
-  //     error:(err)=>{
-  //       console.log(err); 
+  //       this.selectedProducts = data
+  //     } else {
+  //       console.log('Empty response');
+  //     } 
+  //   },
+  //   error: (err) => {
+  //     if (err.status === 404) {
+  //       console.log('Product not found');
+  //     } else {
+  //       console.log('An error occurred:', err);
   //     }
+  //   }
   // });
-  // }
+  
 }
 
 searchProductCat(): void {
