@@ -8,18 +8,48 @@ import { RetailersService } from 'src/app/Services/Retailers/retailers.service';
   styleUrls: ['./retailers.component.scss']
 })
 export class RetailersComponent implements OnInit {
-  Retailers:Retailer[]=[]
+  Retailers:Retailer[]=[];
+  RetailerEmail:string="";
+  selectRetailer:Retailer[]=[];
+  pageSize:number =1;
+  currentPage:number =1;
+  totalPages: number=0;  // Total number of pages
+
 constructor(public RetService:RetailersService){}
 ngOnInit(): void {
+  this.loadRetailers();
+}
+loadRetailers(): void{
   this.RetService.getAllRetailers().subscribe({
     next:(data)=>{
       this.Retailers=data;
-      console.log(this.Retailers);
+      this.selectRetailer=data;
+      this.updateDisplayRetailer();
+      console.log(data);
     },
     error:(err)=>{
-      console.log("error"); 
+      console.log(err); 
     }
   })
 }
+searchRetailer(): void {
+  if (this.RetailerEmail.trim()!=="") {
+    this.selectRetailer = this.Retailers.filter(Retailer => Retailer.email === this.RetailerEmail.trim());
+    console.log(this.selectRetailer);
 
+  }else{
+    this.loadRetailers();
+  }
+}
+
+updateDisplayRetailer():void{
+  const startIndex = (this.currentPage - 1) * this.pageSize;
+  this.selectRetailer = this.Retailers.slice(startIndex, startIndex + this.pageSize);
+}
+onPageChange(page: number): void {
+  this.currentPage = page;
+  this.updateDisplayRetailer();
+  this.totalPages = Math.ceil(this.Retailers.length / this.pageSize);  
+  console.log(this.totalPages);
+}
 }

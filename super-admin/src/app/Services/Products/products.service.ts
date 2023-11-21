@@ -14,13 +14,13 @@ export class ProductsService {
     return this.httpclient.get<IProduct[]>(`${environment.BaseApiURL}/product/all`)
   }
   getProductById(productId:string):Observable<IProduct>{
-    return this.httpclient.get<IProduct>(`${environment.BaseApiURL}/product/${productId}`)
+    return this.httpclient.get<IProduct>(`${environment.BaseApiURL}/product/details/${productId}`)
   }
   getProductBycategory(category:string):Observable<IProduct>{
     return this.httpclient.get<IProduct>(`${environment.BaseApiURL}/product/${category}`)
   }
   deleteProductById(productId: number): Observable<void> {
     // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.httpclient.delete<void>(`${environment.BaseApiURL}/product/${productId}`);
+    return this.httpclient.delete<void>(`${environment.BaseApiURL}/product/admin/${productId}`);
   }
 }

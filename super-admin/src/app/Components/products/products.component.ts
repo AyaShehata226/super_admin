@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/Models/IProducts';
 import { ProductsService } from 'src/app/Services/Products/products.service';
 import { ToastrService } from 'ngx-toastr';
+import { categories } from 'src/app/Models/categories';
+import {CategoriesService} from "src/app/Services/categories/categories.service"
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -15,17 +17,19 @@ export class ProductsComponent implements OnInit {
   currentPage:number =1;
   selectedProducts:IProduct[]=[];
   totalPages: number=0;  // Total number of pages
-
-constructor(public prdService:ProductsService ,private toastr:ToastrService){
+  categories:categories[] = [];
+constructor(public prdService:ProductsService ,public toastr:ToastrService , public cateService:CategoriesService){
   
 }
 ngOnInit(): void {
   this.loadProducts();
+  this.getAllCategories();
 }
 loadProducts():void{
   this.prdService.getAllProducts().subscribe({
     next: (data) => {
       this.products = data;
+      this.selectedProducts=data;
       this.updateDisplayedProducts();
       console.log(this.selectedProducts);
       
@@ -34,9 +38,21 @@ loadProducts():void{
       console.log(err);
     }
   });
-
-  
 }
+getAllCategories():void{
+  this.cateService.getAllCategories().subscribe({
+    next: (data) => {
+      this.categories = data;
+      this.updateDisplayedProducts();
+      console.log(this.categories);
+    },
+    error: (err) => {
+      console.log(err);
+    }
+  });
+
+}
+
 updateDisplayedProducts():void{
   const startIndex = (this.currentPage - 1) * this.pageSize;
   this.selectedProducts = this.products.slice(startIndex, startIndex + this.pageSize);
@@ -44,60 +60,20 @@ updateDisplayedProducts():void{
 onPageChange(page: number): void {
   this.currentPage = page;
   this.updateDisplayedProducts();
-}
-calculateTotalPages(): void {
   this.totalPages = Math.ceil(this.products.length / this.pageSize);  
-}
 
+}
 searchProductId(): void {
-  // Check if productId is not empty
-  if (this.productId!=="") {
-    this.prdService.getProductById(this.productId).subscribe({
-      next:(data)=>{
-        console.log(data);
-        console.log(this.productId);
-        
-        // this.selectedProductWithId=data
-      },
-      error:(err)=>{
-        console.log(err); 
-      }
-  });
-  }
-  // this.prdService.getAllProducts().subscribe({
-  //   next: (data) => {
-  //     if (data) {
-  //       console.log(data);
-  //       console.log(this.productId);
-  //       this.selectedProducts = data
-  //     } else {
-  //       console.log('Empty response');
-  //     } 
-  //   },
-  //   error: (err) => {
-  //     if (err.status === 404) {
-  //       console.log('Product not found');
-  //     } else {
-  //       console.log('An error occurred:', err);
-  //     }
-  //   }
-  // });
-  
 }
 
-searchProductCat(): void {
-  // Check if productId is not empty
+searchProductCat():void {
   if (this.productCat.trim()!=="") {
-    this.prdService.getProductBycategory(this.productCat).subscribe({
-      next:(data)=>{
-        // this.selectedProducts=data
-        console.log(data);
-        console.log(this.productCat);
-      },
-      error:(err)=>{
-        console.log(err); 
-      }
-  });
+    this.selectedProducts = this.products.filter(product => product.category === this.productCat.trim());
+    console.log(this.selectedProducts);
+
+    this.updateDisplayedProducts();
+    this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);
+    // console.log(this.totalPages);
   }
   else{
     this.loadProducts()

@@ -1,8 +1,6 @@
-import { ArrayType } from '@angular/compiler';
-
 export interface IProduct {
-  id:number;
-  titel:string;
+  _id:number;
+  title:string;
   description:string;
   rating:number;
   stock:number;
