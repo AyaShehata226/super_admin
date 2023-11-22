@@ -24,6 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { RegisterComponent } from './Components/Register/register/register.component';
 import { LoginComponent } from './Components/Login/login/login.component';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { BarChartComponent } from './Components/bar-chart/bar-chart.component';
+import { LineChartComponent } from './Components/line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
     StatisticsComponent,
     RegisterComponent,
     LoginComponent,
+    BarChartComponent,
+    LineChartComponent,
   ],
   imports: [
     BrowserModule,

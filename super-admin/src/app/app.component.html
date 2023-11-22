@@ -1,41 +1,45 @@
 <div class="overflow-hidden">
   <mat-sidenav-container style="background-color: white">
     <mat-sidenav [(opened)]="opened" mode="side">
-      <img class="imgLogo mt-3 ms-4 mb-2" src="assets/logo-04.png" alt="logo" />
+      <div class="d-flex justify-content-center py-3">
+        <img class="imgLogo" src="assets/logo-04.png" alt="logo" />
+      </div>
       <hr class="w-75 ms-3" />
       <span class="ms-3" style="font-size: 10px; color: rgb(180, 179, 179)"
         >Quick access</span
       >
       <mat-list>
         <mat-list-item class="quick">
-          <a routerLink="/dashboard" routerLinkActive="classActive"
-            ><mat-icon>home</mat-icon><span class="ms-1">Dashboard</span></a
+          <a class="d-flex align-items-center" routerLink="/dashboard" routerLinkActive="classActive">
+            <mat-icon>home</mat-icon><span class="ms-1">Dashboard</span>
+          </a>
+        </mat-list-item>
+        <mat-list-item class="quick">
+          <a class="d-flex align-items-center" routerLink="/statistics" routerLinkActive="classActive"
+            ><mat-icon>bar_chart</mat-icon
+            ><span class="ms-1">Statistics</span></a
           >
         </mat-list-item>
         <mat-list-item class="quick">
-          <a routerLink="/statistics" routerLinkActive="classActive"
-            ><mat-icon>bar_chart</mat-icon><span class="ms-1">Statistics</span></a
-          >
-        </mat-list-item>
-        <mat-list-item class="quick">
-          <a routerLink="/customers" routerLinkActive="classActive"
+          <a class="d-flex align-items-center" routerLink="/customers" routerLinkActive="classActive"
             ><mat-icon>group</mat-icon><span class="ms-1">Customers</span></a
           >
         </mat-list-item>
         <mat-list-item class="quick">
-          <a routerLink="/products" routerLinkActive="classActive"
+          <a class="d-flex align-items-center" routerLink="/products" routerLinkActive="classActive"
             ><mat-icon>add_shopping_cart</mat-icon
             ><span class="ms-1">Products</span></a
           >
         </mat-list-item>
         <mat-list-item class="quick">
-          <a routerLink="/retailers" routerLinkActive="classActive"
+          <a class="d-flex align-items-center" routerLink="/retailers" routerLinkActive="classActive"
             ><mat-icon>store</mat-icon><span class="ms-1">Retailers</span></a
           >
         </mat-list-item>
         <mat-list-item class="quick">
-          <a routerLink="/Orders" routerLinkActive="classActive"
-            ><mat-icon>add_shopping_cart</mat-icon><span class="ms-1">Orders</span></a
+          <a class="d-flex align-items-center" routerLink="/Orders" routerLinkActive="classActive"
+            ><mat-icon>add_shopping_cart</mat-icon
+            ><span class="ms-1">Orders</span></a
           >
         </mat-list-item>
         <hr class="w-75 ms-3" />
@@ -43,34 +47,36 @@
           >MY Account</span
         >
         <mat-list-item class="quick">
-          <a href="#"
+          <a class="d-flex align-items-center" href="#"
             ><mat-icon>account_balance_wallet</mat-icon
             ><span class="ms-1">Wallet</span></a
           >
         </mat-list-item>
         <mat-list-item class="quick">
-          <a href="#"
+          <a class="d-flex align-items-center" href="#"
             ><mat-icon>person</mat-icon><span class="ms-1">Profile</span></a
           >
         </mat-list-item>
         <mat-list-item class="quick">
-          <a href="#"
+          <a class="d-flex align-items-center" href="#"
             ><mat-icon>calendar_today</mat-icon
             ><span class="ms-1">Agenda</span></a
           >
         </mat-list-item>
         <hr class="w-75 ms-3" />
         <mat-list-item class="quick">
-          <a href="#"
+          <a class="d-flex align-items-center" href="#"
             ><mat-icon>forum</mat-icon><span class="ms-1">Community</span></a
           >
         </mat-list-item>
         <mat-list-item class="quick">
-          <a href="#"><mat-icon>help</mat-icon><span class="ms-1">Q & A</span></a>
+          <a class="d-flex align-items-center" href="#"
+            ><mat-icon>help</mat-icon><span class="ms-1">Q & A</span></a
+          >
         </mat-list-item>
         <hr class="w-75 ms-3" />
         <mat-list-item class="quick">
-          <a href="#">
+          <a class="d-flex align-items-center" href="#">
             <mat-icon>exit_to_app</mat-icon>
             <span class="ms-1">Log Out</span>
           </a>
@@ -78,20 +84,19 @@
       </mat-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <mat-toolbar>
-        <p class="w-50 mt-4 menu" (click)="opened =!opened">
+      <mat-toolbar class="d-flex align-items-center">
+        <p class="w-50 mt-4 menu" style="cursor: pointer;" (click)="opened = !opened">
           <mat-icon>menu</mat-icon>
         </p>
         <span class="w-50 d-flex justify-content-end">
-          <div class="mt-2">
-            <a href="#"><mat-icon class="me-4">person</mat-icon></a>
-            <a href="#" class="me-2"><mat-icon>notifications</mat-icon></a>
+          <div class=" d-flex gap-1 align-items-center">
+            <a href="#"><mat-icon>person</mat-icon></a>
+            <a href="#"><mat-icon>notifications</mat-icon></a>
           </div>
         </span>
-        <a routerLink="/singup" routerLinkActive="classActive" class="me-2">SingUp</a>
-        <a routerLink="/login" routerLinkActive="classActive" class="me-2">login</a>
+       
       </mat-toolbar>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
-  </mat-sidenav-container>  
+  </mat-sidenav-container>
 </div>
