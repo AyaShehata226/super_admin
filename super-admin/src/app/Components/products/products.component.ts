@@ -13,6 +13,7 @@ export class ProductsComponent implements OnInit {
   products:IProduct[]=[];
   productId:string ="";
   productCat:string = "";
+  productBrand:string = "";
   pageSize:number =20;
   currentPage:number =1;
   selectedProducts:IProduct[]=[];
@@ -52,7 +53,33 @@ getAllCategories():void{
   });
 
 }
+searchProductCat():void {
+  if (this.productCat.trim()!=="") {
+    this.selectedProducts = this.products.filter(product => product.category === this.productCat.trim());
+    this.updateDisplayedProducts();
 
+    this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);
+    console.log(this.selectedProducts);
+
+    // console.log(this.totalPages);
+  }
+  else{
+    this.loadProducts()
+  }
+}
+searchProductbrand():void {
+  if (this.productBrand.trim()!=="") {
+    this.selectedProducts = this.products.filter(product => product.brand === this.productBrand.trim());
+    this.updateDisplayedProducts();
+
+    this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);
+    console.log(this.selectedProducts);
+    console.log(this.productBrand);
+  }
+  else{
+    this.loadProducts()
+  }
+}
 updateDisplayedProducts():void{
   const startIndex = (this.currentPage - 1) * this.pageSize;
   this.selectedProducts = this.products.slice(startIndex, startIndex + this.pageSize);
@@ -66,19 +93,7 @@ onPageChange(page: number): void {
 searchProductId(): void {
 }
 
-searchProductCat():void {
-  if (this.productCat.trim()!=="") {
-    this.selectedProducts = this.products.filter(product => product.category === this.productCat.trim());
-    console.log(this.selectedProducts);
 
-    this.updateDisplayedProducts();
-    this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);
-    // console.log(this.totalPages);
-  }
-  else{
-    this.loadProducts()
-  }
-}
 
 deleteProduct(productId: number): void {
   this.prdService.deleteProductById(productId).subscribe(

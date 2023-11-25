@@ -22,19 +22,20 @@
       </div>
       <div class="input-group w-50 col-md-10 col-sm-6 mt-2 mb-2">
         <label class="input-group-text me-2 rounded" for="categoryDropdown">Brand</label>
-        <select class="form-select rounded" id="categoryDropdown" [(ngModel)]="productCat">
+        <!-- <select class="form-select rounded" id="categoryDropdown" [(ngModel)]="productCat">
           <option value="" disabled selected>Brand</option>
           <option *ngFor="let category of categories" [value]="category.cat_title">{{ category.cat_title }}</option>
           <option value="fragrances">fragrances</option>
           <option value="groceries">groceries</option>
           <option value="skincare">skincare</option>
-        </select>
+        </select> -->
+        <input type="text" class="form-control rounded" [(ngModel)]="productBrand">
         <button
           class="btn btn-success"
           type="button"
           id="button-addon1"
           data-mdb-ripple-color="dark"
-          (click)="searchProductId()"
+          (click)="searchProductbrand()"
         >
           search
         </button>
@@ -46,7 +47,6 @@
       <table class="table table-hover border rounded-3 w-100 ">
         <thead>
           <tr class="">
-            <!-- <th scope="col"> Id</th> -->
             <th scope="col">Name</th>
             <th scope="col">stock</th>
             <th scope="col">quantity</th>
@@ -57,8 +57,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let prd of selectedProducts">
-            <!-- <td scope="row">{{ prd._id }}</td> -->
+          <tr *ngFor="let prd of selectedProducts" [ngStyle]="{'background': prd.quantity < 5 ? '#FF8A8A' : ''}">
             <td>{{ prd.title}}</td>
             <td>{{ prd.stock }}</td>
             <td>{{ prd.quantity }}</td>
@@ -70,6 +69,7 @@
                 <mat-icon>delete</mat-icon>
               </button>
             </td>
+            
           </tr>
         </tbody>
       </table>
