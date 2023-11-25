@@ -9,15 +9,16 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { StatisticsComponent } from './Components/statistics/statistics.component';
 import { RegisterComponent } from './Components/Register/register/register.component';
 import { LoginComponent } from './Components/Login/login/login.component';
+import { adminGuardGuard } from './Guards/admin-guard.guard';
 
 const routes: Routes = [
-  {path:'' , redirectTo:'/dashboard' , pathMatch: 'full'},
-  {path: 'dashboard' , component:DashboardComponent , title: 'dashboard page'},
-  {path: 'products' , component:ProductsComponent , title: 'products page'},
-  {path: 'customers' , component:CustomersComponent , title: 'customers page'},
-  {path: 'orders' , component:OrdersComponent , title: 'orders page'},
-  {path: 'retailers' , component:RetailersComponent , title: 'retailers page'},
-  {path: 'statistics' , component:StatisticsComponent , title: 'statistics page'},
+  {path:'' , redirectTo:'/dashboard' , pathMatch: 'full',},
+  {path: 'dashboard' , component:DashboardComponent , title: 'dashboard page',canActivate:[adminGuardGuard]},
+  {path: 'products' , component:ProductsComponent , title: 'products page',canActivate:[adminGuardGuard]},
+  {path: 'customers' , component:CustomersComponent , title: 'customers page' , canActivate:[adminGuardGuard]},
+  {path: 'orders' , component:OrdersComponent , title: 'orders page',canActivate:[adminGuardGuard]},
+  {path: 'retailers' , component:RetailersComponent , title: 'retailers page',canActivate:[adminGuardGuard]},
+  {path: 'statistics' , component:StatisticsComponent , title: 'statistics page', canActivate:[adminGuardGuard]},
   {path: 'singup', component:RegisterComponent , title: 'singup page'},
   {path: 'login', component:LoginComponent , title: 'login page'},
   {path:'**' , component:NotFoundComponent , title: 'notfound'}

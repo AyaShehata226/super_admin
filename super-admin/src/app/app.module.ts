@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { PieChartComponent } from './Components/pie-chart/pie-chart.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
@@ -56,6 +56,7 @@ import { LineChartComponent } from './Components/line-chart/line-chart.component
     CanvasJSAngularChartsModule,
     MatListModule,
     HttpClientModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-center',
