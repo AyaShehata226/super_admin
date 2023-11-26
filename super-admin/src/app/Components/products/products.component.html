@@ -1,19 +1,30 @@
 <ng-container *ngIf="isLoading">
-  <ngx-spinner 
-  bdColor="rgba(0, 0, 0, 1)"
-  template="<img  class='img-fluid' src='assets/E-commerce image.gif' />">
-</ngx-spinner>
+  <ngx-spinner
+    bdColor="rgba(0, 0, 0, 1)"
+    template="<img  class='img-fluid' src='assets/E-commerce image.gif' />"
+  >
+  </ngx-spinner>
   Loading...
 </ng-container>
 <div class="container overflow-hidden">
-  
   <div class="row" *ngIf="!isLoading && selectedProducts">
     <div class="d-flex flex-column ms-5">
       <div class="input-group w-50 me-2 mt-5 mb-4">
-        <label class="input-group-text me-2 rounded" for="categoryDropdown">Categories</label>
-        <select class="form-select rounded" id="categoryDropdown" [(ngModel)]="productCat">
+        <label class="input-group-text me-2 rounded" for="categoryDropdown"
+          >Categories</label
+        >
+        <select
+          class="form-select rounded"
+          id="categoryDropdown"
+          [(ngModel)]="productCat"
+        >
           <option value="" disabled selected>Select a category</option>
-          <option *ngFor="let category of categories" [value]="category.cat_title">{{ category.cat_title }}</option>
+          <option
+            *ngFor="let category of categories"
+            [value]="category.cat_title"
+          >
+            {{ category.cat_title }}
+          </option>
           <option value="fragrances">fragrances</option>
           <option value="groceries">groceries</option>
           <option value="skincare">skincare</option>
@@ -29,7 +40,9 @@
         </button>
       </div>
       <div class="input-group w-50 col-md-10 col-sm-6 mt-2 mb-2">
-        <label class="input-group-text me-2 rounded" for="categoryDropdown">Brand</label>
+        <label class="input-group-text me-2 rounded" for="categoryDropdown"
+          >Brand</label
+        >
         <!-- <select class="form-select rounded" id="categoryDropdown" [(ngModel)]="productCat">
           <option value="" disabled selected>Brand</option>
           <option *ngFor="let category of categories" [value]="category.cat_title">{{ category.cat_title }}</option>
@@ -37,7 +50,11 @@
           <option value="groceries">groceries</option>
           <option value="skincare">skincare</option>
         </select> -->
-        <input type="text" class="form-control rounded" [(ngModel)]="productBrand">
+        <input
+          type="text"
+          class="form-control rounded"
+          [(ngModel)]="productBrand"
+        />
         <button
           class="btn btn-success"
           type="button"
@@ -52,9 +69,9 @@
   </div>
   <div class="row table-responsive-md table-responsive-sm m-5">
     <div class="d-flex justify-content-center">
-      <table class="table table-hover border rounded-3 w-100 ">
+      <table class="table table-hover border rounded-3 w-100">
         <thead>
-          <tr class=" text-center">
+          <tr class="text-center">
             <th scope="col">Name</th>
             <th scope="col">stock</th>
             <th scope="col">quantity</th>
@@ -65,33 +82,55 @@
           </tr>
         </thead>
         <tbody class="text-center">
-          <tr *ngFor="let prd of selectedProducts" [ngStyle]="{'background': prd.quantity < 5 ? '#FF8A8A' : ''}">
-            <td>{{ prd.title.toString().split(' ').splice(0,3).join(' ')}}</td>
+          <tr
+            *ngFor="let prd of selectedProducts"
+            [ngStyle]="{ background: prd.quantity < 5 ? '#FF8A8A' : '' }"
+          >
+            <td>
+              {{ prd.title.toString().split(" ").splice(0, 3).join(" ") }}
+            </td>
             <td>{{ prd.stock }}</td>
             <td>{{ prd.quantity }}</td>
             <td>{{ prd.brand }}</td>
             <td>{{ prd.category }}</td>
-            <td><img src="{{ prd.images[0] }}" class="rounded-circle" style="width: 40px; height: 40px;" /></td>
             <td>
-              <button (click)="deleteProduct(prd._id)" type="button" class="btn text-danger">
+              <img
+                src="{{ prd.images[0] }}"
+                class="rounded-circle"
+                style="width: 40px; height: 40px"
+              />
+            </td>
+            <td>
+              <button
+                (click)="deleteProduct(prd._id)"
+                type="button"
+                class="btn text-danger"
+              >
                 <mat-icon>delete</mat-icon>
               </button>
             </td>
-            
           </tr>
         </tbody>
       </table>
     </div>
   </div>
   <div class="pagination m-5 justify-content-center">
-    <button class="btn border" (click)="onPageChange(currentPage - 1)" [disabled]="currentPage == 1">
-      <mat-icon class="mt-2 ms-2">arrow_back_ios</mat-icon> 
+    <button
+      class="btn border"
+      (click)="onPageChange(currentPage - 1)"
+      [disabled]="currentPage == 1"
+    >
+      <mat-icon class="mt-2 ms-2">arrow_back_ios</mat-icon>
     </button>
-    <span class="m-3  p-2">{{ currentPage}}</span>
-    <span class="m-3  p-2">{{ currentPage+1}}</span>
-    <span class="m-3  p-2">{{ currentPage+2}}</span>
-    <button class="btn border" (click)="onPageChange(currentPage + 1)" [disabled]="currentPage == totalPages">
-       <mat-icon class="mt-2 ms-2 ">arrow_forward_ios</mat-icon>
+    <span class="m-3 p-2">{{ currentPage }}</span>
+    <span class="m-3 p-2">{{ currentPage + 1 }}</span>
+    <span class="m-3 p-2">{{ currentPage + 2 }}</span>
+    <button
+      class="btn border"
+      (click)="onPageChange(currentPage + 1)"
+      [disabled]="currentPage == totalPages"
+    >
+      <mat-icon class="mt-2 ms-2">arrow_forward_ios</mat-icon>
     </button>
   </div>
-  
+</div>

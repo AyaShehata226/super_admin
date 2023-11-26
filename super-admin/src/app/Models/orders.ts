@@ -1,7 +1,9 @@
+import { IProduct } from "./IProducts";
+
 export interface Orders {
-    _id:number;
+    _id:string;
     status:string;
     customer_Id:string;
-    cart_Customer:string;
+    cart_Customer:IProduct[];
   }
   

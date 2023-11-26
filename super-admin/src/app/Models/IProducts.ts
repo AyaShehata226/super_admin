@@ -1,5 +1,8 @@
 export interface IProduct {
   _id:number;
+  id:string;
+  status:string;
+  price:number;
   title:string;
   description:string;
   rating:number;
@@ -10,4 +13,5 @@ export interface IProduct {
   category:string;
   thumbnail:string;
   images:string[];
+  img:string;
 }

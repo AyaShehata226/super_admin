@@ -44,6 +44,7 @@ loadRetailers(): void{
       for(let i = 0 ; i<this.RetailerId.length; i++){
         this.loadRetailersPrds(this.RetailerId[i])
       }
+      this.isLoading = false;
     },
     error:(err)=>{
       console.log(err); 

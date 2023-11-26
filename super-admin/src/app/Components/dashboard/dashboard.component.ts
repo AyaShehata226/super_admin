@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
 
   setTimeout(() => {
     this.spinner.hide();
+    this.isLoading = false;
   }, 5000);
   }
 

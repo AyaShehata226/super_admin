@@ -23,9 +23,7 @@ export class ProductsComponent implements OnInit {
   isLoading: boolean = false ;
 constructor(public prdService:ProductsService ,public toastr:ToastrService , public cateService:CategoriesService
   ,private spinner: NgxSpinnerService
-  ){
-  
-}
+  ){ }
 ngOnInit(): void {
   this.isLoading = true;
   this.loadProducts();
