@@ -54,7 +54,7 @@
     <div class="d-flex justify-content-center">
       <table class="table table-hover border rounded-3 w-100 ">
         <thead>
-          <tr class="">
+          <tr class=" text-center">
             <th scope="col">Name</th>
             <th scope="col">stock</th>
             <th scope="col">quantity</th>
@@ -64,14 +64,14 @@
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
           <tr *ngFor="let prd of selectedProducts" [ngStyle]="{'background': prd.quantity < 5 ? '#FF8A8A' : ''}">
-            <td>{{ prd.title}}</td>
+            <td>{{ prd.title.toString().split(' ').splice(0,3).join(' ')}}</td>
             <td>{{ prd.stock }}</td>
             <td>{{ prd.quantity }}</td>
             <td>{{ prd.brand }}</td>
             <td>{{ prd.category }}</td>
-            <td><img src="{{ prd.thumbnail }}" class="w-25 h-25 rounded-circle" /></td>
+            <td><img src="{{ prd.images[0] }}" class="rounded-circle" style="width: 40px; height: 40px;" /></td>
             <td>
               <button (click)="deleteProduct(prd._id)" type="button" class="btn text-danger">
                 <mat-icon>delete</mat-icon>
