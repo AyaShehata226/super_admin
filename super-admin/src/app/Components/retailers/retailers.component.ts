@@ -2,6 +2,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Retailer } from './../../Models/Retailers';
 import { RetailersService } from 'src/app/Services/Retailers/retailers.service';
+import { IProduct } from 'src/app/Models/IProducts';
 
 @Component({
   selector: 'app-retailers',
@@ -11,11 +12,14 @@ import { RetailersService } from 'src/app/Services/Retailers/retailers.service';
 export class RetailersComponent implements OnInit {
   Retailers:Retailer[]=[];
   RetailerEmail:string="";
+  RetailerId:string[]=[];
   selectRetailer:Retailer[]=[];
+  retailerPrds = [];
   pageSize:number =1;
   currentPage:number =1;
   totalPages: number=0;  // Total number of pages
   isLoading: boolean = false ;
+  counter:number = 0;
 constructor(public RetService:RetailersService , private spinner: NgxSpinnerService){}
 ngOnInit(): void {
   this.loadRetailers();
@@ -25,6 +29,8 @@ ngOnInit(): void {
   setTimeout(() => {
     this.spinner.hide();
   }, 5000);
+
+  
 }
 loadRetailers(): void{
   this.RetService.getAllRetailers().subscribe({
@@ -32,13 +38,36 @@ loadRetailers(): void{
       this.Retailers=data;
       this.selectRetailer=data;
       this.updateDisplayRetailer();
-      console.log(data);
+      for(let i = 0 ; i < data.length; i++){
+        this.RetailerId.push(data[i]._id);
+      }
+      for(let i = 0 ; i<this.RetailerId.length; i++){
+        this.loadRetailersPrds(this.RetailerId[i])
+      }
     },
     error:(err)=>{
       console.log(err); 
     }
   })
 }
+
+loadRetailersPrds(id:string):void{
+  
+     this.RetService.getAllRetailersPrds(id).subscribe({
+    next:(data)=>{
+      this.retailerPrds = data.products
+      this.Retailers[this.counter].products.push(...this.retailerPrds)
+      this.counter++;
+      
+    },
+    error:(err)=>{
+      console.log('err',err);
+       
+    }
+  })
+}
+
+
 searchRetailer(): void {
   if (this.RetailerEmail.trim()!=="") {
     this.selectRetailer = this.Retailers.filter(Retailer => Retailer.email === this.RetailerEmail.trim());
