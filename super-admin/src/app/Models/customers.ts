@@ -1,4 +1,5 @@
 export interface Customers {
+  customers: any;
   _id:number;
   name:string;
   email:string;

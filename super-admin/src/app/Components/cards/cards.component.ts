@@ -21,7 +21,8 @@ export class CardsComponent implements OnInit {
   ngOnInit(): void {
     this.customersSer.getAllCustomers().subscribe({
       next:(data)=>{
-        this.customers=data;
+        data.customers = [... new Set(data.customers)]
+        this.customers.push(...data.customers);
         console.log(data);
       },
       error:(err)=>{

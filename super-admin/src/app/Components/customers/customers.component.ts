@@ -9,6 +9,7 @@ import { CustomersService } from 'src/app/Services/customers/customers.service';
 })
 export class CustomersComponent implements OnInit {
   customers:Customers[]=[];
+  newCust:Customers[]=[];
   customerEmail:string="";
   selectCustomer:Customers[]=[];
   pageSize:number =10;
@@ -30,15 +31,17 @@ export class CustomersComponent implements OnInit {
 loadCustomers():void{
   this.customersSer.getAllCustomers().subscribe({
     next:(data)=>{
-      this.customers=data;
-      this.selectCustomer=data;
+      data.customers = [... new Set(data.customers)]
+      
+      this.customers.push(...data.customers);
+      console.log(this.customers);
+      
+      this.selectCustomer.push(...data.customers)
       this.isLoading = false;
       this.updateDisplayCutomers();
-      console.log(data);
     },
     error:(err)=>{
       console.log(err); 
-      this.isLoading = false;
     }
   })
 }
