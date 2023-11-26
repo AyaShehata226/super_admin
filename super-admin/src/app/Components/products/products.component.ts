@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/Models/IProducts';
 import { ProductsService } from 'src/app/Services/Products/products.service';
@@ -19,12 +20,21 @@ export class ProductsComponent implements OnInit {
   selectedProducts:IProduct[]=[];
   totalPages: number=0;  // Total number of pages
   categories:categories[] = [];
-constructor(public prdService:ProductsService ,public toastr:ToastrService , public cateService:CategoriesService){
+  isLoading: boolean = false ;
+constructor(public prdService:ProductsService ,public toastr:ToastrService , public cateService:CategoriesService
+  ,private spinner: NgxSpinnerService
+  ){
   
 }
 ngOnInit(): void {
+  this.isLoading = true;
   this.loadProducts();
   this.getAllCategories();
+  this.spinner.show();
+
+  setTimeout(() => {
+    this.spinner.hide();
+  }, 5000);
 }
 loadProducts():void{
   this.prdService.getAllProducts().subscribe({
@@ -32,11 +42,13 @@ loadProducts():void{
       this.products = data;
       this.selectedProducts=data;
       this.updateDisplayedProducts();
+      this.isLoading = false;
       console.log(this.selectedProducts);
       
     },
     error: (err) => {
       console.log(err);
+      this.isLoading = false;
     }
   });
 }

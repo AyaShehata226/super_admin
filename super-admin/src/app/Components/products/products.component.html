@@ -1,5 +1,13 @@
+<ng-container *ngIf="isLoading">
+  <ngx-spinner 
+  bdColor="rgba(0, 0, 0, 1)"
+  template="<img  class='img-fluid' src='assets/E-commerce image.gif' />">
+</ngx-spinner>
+  Loading...
+</ng-container>
 <div class="container overflow-hidden">
-  <div class="row">
+  
+  <div class="row" *ngIf="!isLoading && selectedProducts">
     <div class="d-flex flex-column ms-5">
       <div class="input-group w-50 me-2 mt-5 mb-4">
         <label class="input-group-text me-2 rounded" for="categoryDropdown">Categories</label>

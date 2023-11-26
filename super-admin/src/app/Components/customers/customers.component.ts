@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Customers } from 'src/app/Models/customers';
 import { CustomersService } from 'src/app/Services/customers/customers.service';
@@ -13,21 +14,31 @@ export class CustomersComponent implements OnInit {
   pageSize:number =10;
   currentPage:number =1;
   totalPages: number=0;  // Total number of pages
-  constructor(public customersSer:CustomersService){}
+  isLoading:boolean = false;
+  constructor(private spinner: NgxSpinnerService,public customersSer:CustomersService){}
   
   ngOnInit(): void {
+    this.isLoading = true;
     this.loadCustomers();
+    this.spinner.show();
+
+  setTimeout(() => {
+    this.spinner.hide();
+  }, 5000);
+
   }
 loadCustomers():void{
   this.customersSer.getAllCustomers().subscribe({
     next:(data)=>{
       this.customers=data;
       this.selectCustomer=data;
+      this.isLoading = false;
       this.updateDisplayCutomers();
       console.log(data);
     },
     error:(err)=>{
       console.log(err); 
+      this.isLoading = false;
     }
   })
 }

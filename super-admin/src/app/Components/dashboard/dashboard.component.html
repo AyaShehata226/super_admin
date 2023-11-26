@@ -1,3 +1,10 @@
+<ng-container *ngIf="isLoading">
+    <ngx-spinner 
+    bdColor="rgba(0, 0, 0, 1)"
+    template="<img  class='img-fluid' src='assets/E-commerce image.gif' />">
+  </ngx-spinner>
+    Loading...
+  </ng-container>
 <app-cards></app-cards>
 <div class="container">
     <div class="row d-flex justify-content-evenly">

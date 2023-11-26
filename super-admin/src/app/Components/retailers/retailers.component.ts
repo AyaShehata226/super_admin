@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Retailer } from './../../Models/Retailers';
 import { RetailersService } from 'src/app/Services/Retailers/retailers.service';
@@ -14,10 +15,16 @@ export class RetailersComponent implements OnInit {
   pageSize:number =1;
   currentPage:number =1;
   totalPages: number=0;  // Total number of pages
-
-constructor(public RetService:RetailersService){}
+  isLoading: boolean = false ;
+constructor(public RetService:RetailersService , private spinner: NgxSpinnerService){}
 ngOnInit(): void {
   this.loadRetailers();
+  this.isLoading = true;
+  this.spinner.show();
+
+  setTimeout(() => {
+    this.spinner.hide();
+  }, 5000);
 }
 loadRetailers(): void{
   this.RetService.getAllRetailers().subscribe({
