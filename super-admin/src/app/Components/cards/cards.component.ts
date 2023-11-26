@@ -6,6 +6,8 @@ import { ProductsService } from 'src/app/Services/Products/products.service';
 import { IProduct } from 'src/app/Models/IProducts';
 import { RetailersService } from 'src/app/Services/Retailers/retailers.service';
 import { Retailer } from 'src/app/Models/Retailers';
+import { OrdersService } from 'src/app/Services/orders/orders.service';
+import { Orders } from './../../Models/orders';
 
 @Component({
   selector: 'app-cards',
@@ -17,9 +19,17 @@ export class CardsComponent implements OnInit {
   products:IProduct[]=[];
   Retailers:Retailer[]=[];
   isLoading:boolean = false;
-  constructor(private spinner: NgxSpinnerService,public customersSer:CustomersService ,public prdService:ProductsService ,public RetService:RetailersService){}
+  orders:Orders[]=[];
+  productId:string ="";
+  currentPage:number =1;
+  selectedOrders:Orders[]=[];
+  pageSize:number =20;
+  totalPages: number=0;  // Total number of pages
+  customerCart:IProduct[]=[];
+  constructor(public orderSer:OrdersService,private spinner: NgxSpinnerService,public customersSer:CustomersService ,public prdService:ProductsService ,public RetService:RetailersService){}
   
   ngOnInit(): void {
+    this.loadOrders();
     this.isLoading = true;
     this.spinner.show();
   setTimeout(() => {
@@ -59,6 +69,26 @@ export class CardsComponent implements OnInit {
         console.log("error"); 
       }
     })
+  }
+
+  
+  loadOrders():void{
+    this.orderSer.getAllProducts().subscribe({
+      next: (data) => {
+        data.Orders = [...data.Orders]
+        this.orders.push(...data.Orders ); 
+        this.selectedOrders.push(...data.Orders );
+        this.isLoading = false;
+        this.orders.map(ord=>{
+          ord.cart_Customer = [...ord.cart_Customer]
+          this.customerCart.push(...ord.cart_Customer)
+        })
+      },
+      error: (err) => {
+        console.log(err);
+        this.isLoading = false;
+      }
+    });
   }
   
 }
