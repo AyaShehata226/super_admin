@@ -18,6 +18,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit{
   adminForm: FormGroup;
   isLoggedIn: boolean = false;
+  type:string = 'password'
   constructor(private adminSrv: AdminAuthService, private router: Router, private formBuilder: FormBuilder) {
     this.adminForm = this.formBuilder.group({
     
@@ -75,5 +76,13 @@ export class LoginComponent implements OnInit{
       );
     }
       )}
+}
+
+show(){
+  if(this.type == 'password'){
+    this.type = 'text';
+  }else{
+  this.type = 'password';
+  }
 }
 }
