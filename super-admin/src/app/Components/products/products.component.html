@@ -25,9 +25,6 @@
           >
             {{ category.cat_title }}
           </option>
-          <option value="fragrances">fragrances</option>
-          <option value="groceries">groceries</option>
-          <option value="skincare">skincare</option>
         </select>
         <button
           class="btn btn-success"
@@ -43,13 +40,6 @@
         <label class="input-group-text me-2 rounded" for="categoryDropdown"
           >Brand</label
         >
-        <!-- <select class="form-select rounded" id="categoryDropdown" [(ngModel)]="productCat">
-          <option value="" disabled selected>Brand</option>
-          <option *ngFor="let category of categories" [value]="category.cat_title">{{ category.cat_title }}</option>
-          <option value="fragrances">fragrances</option>
-          <option value="groceries">groceries</option>
-          <option value="skincare">skincare</option>
-        </select> -->
         <input
           type="text"
           class="form-control rounded"
@@ -84,13 +74,12 @@
         <tbody class="text-center">
           <tr
             *ngFor="let prd of selectedProducts"
-            [ngStyle]="{ background: prd.quantity < 5 ? '#FF8A8A' : '' }"
           >
             <td>
               {{ prd.title.toString().split(" ").splice(0, 3).join(" ") }}
             </td>
             <td>{{ prd.stock }}</td>
-            <td>{{ prd.quantity }}</td>
+            <td [ngStyle]="{ background: prd.quantity < 5 ? '#FF8A8A' : '' }">{{ prd.quantity }}</td>
             <td>{{ prd.brand }}</td>
             <td>{{ prd.category }}</td>
             <td>

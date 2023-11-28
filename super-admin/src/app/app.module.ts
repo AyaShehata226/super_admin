@@ -28,7 +28,7 @@ import { BarChartComponent } from './Components/bar-chart/bar-chart.component';
 import { LineChartComponent } from './Components/line-chart/line-chart.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import {NgConfirmModule} from 'ng-confirm-box';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +67,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     }
     ),
     NgApexchartsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgConfirmModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

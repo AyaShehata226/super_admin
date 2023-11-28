@@ -5,6 +5,7 @@ import { ProductsService } from 'src/app/Services/Products/products.service';
 import { ToastrService } from 'ngx-toastr';
 import { categories } from 'src/app/Models/categories';
 import {CategoriesService} from "src/app/Services/categories/categories.service"
+import { NgConfirmService } from 'ng-confirm-box';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -22,7 +23,7 @@ export class ProductsComponent implements OnInit {
   categories:categories[] = [];
   isLoading: boolean = false ;
 constructor(public prdService:ProductsService ,public toastr:ToastrService , public cateService:CategoriesService
-  ,private spinner: NgxSpinnerService
+  ,private spinner: NgxSpinnerService ,private confirm:NgConfirmService
   ){ }
 ngOnInit(): void {
   this.isLoading = true;
@@ -54,7 +55,6 @@ getAllCategories():void{
   this.cateService.getAllCategories().subscribe({
     next: (data) => {
       this.categories = data;
-      this.updateDisplayedProducts();
       console.log(this.categories);
     },
     error: (err) => {
@@ -66,12 +66,7 @@ getAllCategories():void{
 searchProductCat():void {
   if (this.productCat.trim()!=="") {
     this.selectedProducts = this.products.filter(product => product.category === this.productCat.trim());
-    this.updateDisplayedProducts();
-
     this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);
-    console.log(this.selectedProducts);
-
-    // console.log(this.totalPages);
   }
   else{
     this.loadProducts()
@@ -80,11 +75,7 @@ searchProductCat():void {
 searchProductbrand():void {
   if (this.productBrand.trim()!=="") {
     this.selectedProducts = this.products.filter(product => product.brand === this.productBrand.trim());
-    this.updateDisplayedProducts();
-
     this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);
-    console.log(this.selectedProducts);
-    console.log(this.productBrand);
   }
   else{
     this.loadProducts()
@@ -100,20 +91,21 @@ onPageChange(page: number): void {
   this.totalPages = Math.ceil(this.products.length / this.pageSize);  
 
 }
-searchProductId(): void {
-}
-
-
 
 deleteProduct(productId: number): void {
-  this.prdService.deleteProductById(productId).subscribe(
+  this.confirm.showConfirm("Are you sure want to delete?",
     () => {
-      this.toastr.success(`Product with ID ${productId} deleted successfully.`);
-      console.log(`Product with ID ${productId} deleted successfully.`);
+      this.prdService.deleteProductById(productId).subscribe(
+        () => {
+          this.selectedProducts = this.selectedProducts.filter(product => product._id !== productId);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     },
-    (error) => {
-      this.toastr.error(`Error deleting product with ID ${productId}`, 'Error');
-      console.error(`Error deleting product with ID ${productId}`, error);
+    () => {
+      console.log("Deletion canceled");
     }
   );
 }

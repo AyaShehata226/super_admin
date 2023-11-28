@@ -29,6 +29,7 @@
     "chart.js": "^4.4.0",
     "font-awesome": "^4.7.0",
     "ng-apexcharts": "^1.8.0",
+    "ng-confirm-box": "^0.1.1",
     "ng2-charts": "^5.0.3",
     "ngx-spinner": "^16.0.2",
     "ngx-toastr": "^18.0.0",
