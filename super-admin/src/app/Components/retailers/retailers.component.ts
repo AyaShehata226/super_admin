@@ -15,9 +15,9 @@ export class RetailersComponent implements OnInit {
   RetailerId:string[]=[];
   selectRetailer:Retailer[]=[];
   retailerPrds = [];
-  pageSize:number =1;
+  pageSize:number =10;
   currentPage:number =1;
-  totalPages: number=0;  // Total number of pages
+  totalPages: number=0;
   isLoading: boolean = false ;
   counter:number = 0;
 constructor(public RetService:RetailersService , private spinner: NgxSpinnerService){}
@@ -37,7 +37,8 @@ loadRetailers(): void{
     next:(data)=>{
       this.Retailers=data;
       this.selectRetailer=data;
-      this.updateDisplayRetailer();
+      console.log(this.selectRetailer);
+      // this.updateDisplayRetailer();
       for(let i = 0 ; i < data.length; i++){
         this.RetailerId.push(data[i]._id);
       }

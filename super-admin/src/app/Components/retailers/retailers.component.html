@@ -20,9 +20,10 @@
 
           />
           <button
-            class="btn btn-success"
+            class="btn btn-success rounded"
             type="button"
             id="button-addon1"
+            
             data-mdb-ripple-color="dark"
             (click)="searchRetailer()"
           >
@@ -44,7 +45,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let ret of Retailers">
+              <tr *ngFor="let ret of selectRetailer">
                 <td>{{ret.name}}</td>
                 <td>{{ret.email}}</td>
                 <td>{{ret.products.length}}</td>
@@ -64,8 +65,6 @@
             <mat-icon class="mt-2 ms-2">arrow_back_ios</mat-icon> 
           </button>
           <span class="m-3  p-2">{{ currentPage}}</span>
-          <span class="m-3  p-2">{{ currentPage+1}}</span>
-          <span class="m-3  p-2">{{ currentPage+2}}</span>
           <button class="btn border" (click)="onPageChange(currentPage + 1)" [disabled]="currentPage == totalPages">
              <mat-icon class="mt-2 ms-2 ">arrow_forward_ios</mat-icon>
           </button>
