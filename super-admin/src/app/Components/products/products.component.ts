@@ -65,8 +65,13 @@ getAllCategories():void{
 }
 searchProductCat():void {
   if (this.productCat.trim()!=="") {
+    if(this.productCat.toLowerCase()==="all"){
+      this.loadProducts()
+      console.log(this.productCat);
+      
+
+    }
     this.selectedProducts = this.products.filter(product => product.category === this.productCat.trim());
-    this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);
   }
   else{
     this.loadProducts()
@@ -75,7 +80,6 @@ searchProductCat():void {
 searchProductbrand():void {
   if (this.productBrand.trim()!=="") {
     this.selectedProducts = this.products.filter(product => product.brand === this.productBrand.trim());
-    this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);
   }
   else{
     this.loadProducts()

@@ -50,7 +50,7 @@
             <td>{{ cut.name }}</td>
             <td>{{ cut.email }}</td>
             <td>
-              <button type="button" class="btn text-danger">
+              <button type="button" class="btn text-danger" (click)="deleteCustomer(cut._id)">
                 <mat-icon>delete</mat-icon>
               </button>
             </td>

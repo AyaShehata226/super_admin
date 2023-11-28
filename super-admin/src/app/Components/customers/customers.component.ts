@@ -2,6 +2,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Customers } from 'src/app/Models/customers';
 import { CustomersService } from 'src/app/Services/customers/customers.service';
+import { NgConfirmService } from 'ng-confirm-box';
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
@@ -16,7 +17,7 @@ export class CustomersComponent implements OnInit {
   currentPage:number =1;
   totalPages: number=0;  // Total number of pages
   isLoading:boolean = false;
-  constructor(private spinner: NgxSpinnerService,public customersSer:CustomersService){}
+  constructor(private spinner: NgxSpinnerService,public customersSer:CustomersService ,private confirm:NgConfirmService){}
   
   ngOnInit(): void {
     this.isLoading = true;
@@ -62,5 +63,23 @@ searchCustomer(): void {
     this.updateDisplayCutomers();
     this.totalPages = Math.ceil(this.customers.length / this.pageSize);  
     console.log(this.totalPages);
+  }
+
+  deleteCustomer(custmoerId: number): void {
+    this.confirm.showConfirm("Are you sure want to delete?",
+      () => {
+        this.customersSer.deleteCustomerId(custmoerId).subscribe(
+          () => {
+            this.selectCustomer = this.selectCustomer.filter(customer => customer._id !== custmoerId);
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
+      },
+      () => {
+        console.log("Deletion canceled");
+      }
+    );
   }
 }

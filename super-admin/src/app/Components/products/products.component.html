@@ -18,7 +18,7 @@
           id="categoryDropdown"
           [(ngModel)]="productCat"
         >
-          <option value="" disabled selected>Select a category</option>
+          <option value="all" selected>All</option>
           <option
             *ngFor="let category of categories"
             [value]="category.cat_title"
@@ -43,6 +43,7 @@
         <input
           type="text"
           class="form-control rounded"
+          placeholder="Enter your brand"
           [(ngModel)]="productBrand"
         />
         <button
