@@ -35,7 +35,7 @@
   </div>
   <div class="row table-responsive m-5">
     <div class="d-flex justify-content-center">
-      <table class="table table-hover border rounded-3 w-50">
+      <table class="table table-hover border rounded-3 w-75 text-center">
         <thead>
           <tr >
             <th scope="col">Phone</th>
@@ -44,7 +44,7 @@
             <th scope="col">Delete</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="fw-bold">
           <tr *ngFor="let cut of selectCustomer">
             <td scope="row">{{ cut.phone }}</td>
             <td>{{ cut.name }}</td>

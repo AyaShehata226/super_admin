@@ -1,16 +1,17 @@
 <ng-container *ngIf="isLoading">
   <ngx-spinner
     bdColor="rgba(0, 0, 0, 1)"
-    template="<img  class='img-fluid' src='assets/E-commerce image.gif' />">
+    template="<img  class='img-fluid' src='assets/E-commerce image.gif' />"
+  >
   </ngx-spinner>
   Loading...
 </ng-container>
 <div class="container overflow-hidden">
   <div class="row table-responsive-md table-responsive-sm m-5">
     <div class="d-flex justify-content-center row">
-      <table class="table table-hover border rounded-3 w-100  ">
-        <thead class="col-12 text-center bg-info">
-          <tr class="text-center ">
+      <table class="table table-hover border w-100 border-black">
+        <thead>
+          <tr class="text-center">
             <th scope="col" class=" ">Retailer Id</th>
             <th scope="col" class=" ">title</th>
             <th scope="col" class=" ">status</th>
@@ -19,28 +20,39 @@
             <th scope="col" class="">image</th>
           </tr>
         </thead>
-        <tbody class="text-center">
-          <tr *ngFor="let ord of customerCart">
-            <td class="mt-5">
+        <tbody class="text-center ">
+          <tr *ngFor="let ord of customerCart" >
+            <td class="mt-5 ">
               {{ ord.retailer_id }}
             </td>
-            <td class=" fw-bold" style="font-size: 12px;">{{ ord.title.toString().split(' ').slice(0,2).join(' ') }}</td>
-            <td [ngStyle]="ord.status=='delivered'?{'background-color':'green'} : {'background-color': 'blue'}
-            &&ord.status=='shipping'?{'background-color':'orange'} : {'background-color': 'blue'}"
-                style="" class="rounded-3 text-light d-flex justify-content-center align-content-center mt-2"
-            >{{ ord.status }}</td>
+            <td class="fw-bold " style="font-size: 12px">
+              {{ ord.title.toString().split(" ").slice(0, 2).join(" ") }}
+            </td>
+            <td class="">
+              <div
+                [ngStyle]="
+                  ord.status == 'delivered'
+                    ? { 'background-color': 'green' }
+                    : { 'background-color': 'blue' } && ord.status == 'shipping'
+                    ? { 'background-color': 'orange' }
+                    : { 'background-color': 'blue' }
+                "
+                style="height: 40px"
+                class="rounded-3 text-light d-flex justify-content-center align-items-center"
+              >
+                <div>{{ ord.status }}</div>
+              </div>
+            </td>
             <td class="mt-5">{{ ord.quantity }}</td>
             <td class="mt-5">{{ ord.price }}</td>
             <td>
               <img
                 src="{{ ord.img }}"
                 class="rounded-circle"
-                style="width: 40px; height: 40px"/>
+                style="width: 40px; height: 40px"
+              />
             </td>
-
-                        
           </tr>
-
         </tbody>
       </table>
     </div>

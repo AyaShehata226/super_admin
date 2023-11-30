@@ -6,15 +6,15 @@
   </ngx-spinner>
   Loading...
 </ng-container>
-<div class="container overflow-hidden">
-  <div class="row" *ngIf="!isLoading && selectedProducts">
-    <div class="d-flex flex-column ms-5">
-      <div class="input-group w-50 me-2 mt-5 mb-4">
-        <label class="input-group-text me-2 rounded" for="categoryDropdown"
+<div class="container overflow-hidden ">
+  <div class="  text-center  " *ngIf="!isLoading && selectedProducts">
+    <div class=" row d-flex align-items-center justify-content-center ">
+      <div class="input-group w-50 me-2 mt-5 mb-4 col-12">
+        <label class="input-group-text me-2 rounded " for="categoryDropdown"
           >Categories</label
         >
         <select
-          class="form-select rounded"
+          class="form-select rounded "
           id="categoryDropdown"
           [(ngModel)]="productCat"
         >
@@ -59,6 +59,9 @@
     </div>
   </div>
   <div class="row table-responsive-md table-responsive-sm m-5">
+    <p class="fw-bold fs-4 text-danger" ><span class=" text-dark">Number of Products: </span> {{products?.length}}</p>
+    <p class="fw-bold fs-4 text-danger" ><span class=" text-dark">Number of Filtered Products: </span> {{productCat ==='all' || productCat ==='' ?products.length : selectedProducts?.length}}</p>
+    
     <div class="d-flex justify-content-center">
       <table class="table table-hover border rounded-3 w-100">
         <thead>
