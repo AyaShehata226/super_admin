@@ -17,6 +17,7 @@
           class="form-select rounded "
           id="categoryDropdown"
           [(ngModel)]="productCat"
+          (ngModelChange)="searchProductCat()"
         >
           <option value="all" selected>All</option>
           <option
@@ -31,7 +32,6 @@
           type="button"
           id="button-addon1"
           data-mdb-ripple-color="dark"
-          (click)="searchProductCat()"
         >
           search
         </button>
@@ -45,13 +45,13 @@
           class="form-control rounded"
           placeholder="Enter your brand"
           [(ngModel)]="productBrand"
+          (ngModelChange)="searchProductbrand()"
         />
         <button
           class="btn btn-success"
           type="button"
           id="button-addon1"
           data-mdb-ripple-color="dark"
-          (click)="searchProductbrand()"
         >
           search
         </button>

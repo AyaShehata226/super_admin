@@ -72,7 +72,7 @@ loadRetailersPrds(id:string):void{
 
 searchRetailer(): void {
   if (this.RetailerEmail.trim()!=="") {
-    this.selectRetailer = this.Retailers.filter(Retailer => Retailer.email === this.RetailerEmail.trim());
+    this.selectRetailer = this.Retailers.filter(Retailer => Retailer.email.includes(this.RetailerEmail.trim()));
     console.log(this.selectRetailer);
 
   }else{

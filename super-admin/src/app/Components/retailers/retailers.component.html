@@ -17,15 +17,13 @@
             aria-label="Example input"
             aria-describedby="button-addon1"
             [(ngModel)]="RetailerEmail"
-
+            (ngModelChange)="searchRetailer()"
           />
           <button
             class="btn btn-success rounded"
             type="button"
             id="button-addon1"
-            
             data-mdb-ripple-color="dark"
-            (click)="searchRetailer()"
           >
             search
           </button>

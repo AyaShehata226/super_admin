@@ -48,7 +48,7 @@ loadCustomers():void{
 }
 searchCustomer(): void {
     if (this.customerEmail.trim()!=="") {
-      this.selectCustomer = this.customers.filter(customer => customer.email === this.customerEmail.trim());
+      this.selectCustomer = this.customers.filter(customer => customer.email.includes(this.customerEmail.trim()));
       console.log(this.selectCustomer);
     }else{
       this.loadCustomers();
