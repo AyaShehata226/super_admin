@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'statistics' , component:StatisticsComponent , title: 'statistics page', canActivate:[adminGuardGuard]},
   {path: 'singup', component:RegisterComponent , title: 'singup page'},
   {path: 'login', component:LoginComponent , title: 'login page'},
-  {path:'**' , component:NotFoundComponent , title: 'notfound'}
+  {path:"**" , component:NotFoundComponent , title: 'not found page'}
 ];
 
 @NgModule({

@@ -27,14 +27,6 @@
             {{ category.cat_title }}
           </option>
         </select>
-        <button
-          class="btn btn-success"
-          type="button"
-          id="button-addon1"
-          data-mdb-ripple-color="dark"
-        >
-          search
-        </button>
       </div>
       <div class="input-group w-50 col-md-10 col-sm-6 mt-2 mb-2">
         <label class="input-group-text me-2 rounded" for="categoryDropdown"
@@ -47,21 +39,12 @@
           [(ngModel)]="productBrand"
           (ngModelChange)="searchProductbrand()"
         />
-        <button
-          class="btn btn-success"
-          type="button"
-          id="button-addon1"
-          data-mdb-ripple-color="dark"
-        >
-          search
-        </button>
       </div>
     </div>
   </div>
   <div class="row table-responsive-md table-responsive-sm m-5">
-    <p class="fw-bold fs-4 text-danger" ><span class=" text-dark">Number of Products: </span> {{products?.length}}</p>
-    <p class="fw-bold fs-4 text-danger" ><span class=" text-dark">Number of Filtered Products: </span> {{productCat ==='all' || productCat ==='' ?products.length : selectedProducts?.length}}</p>
-    
+    <!-- <p class="fw-bold fs-4 text-danger" ><span class=" text-dark">Number of Products: </span> {{products?.length}}</p> -->
+    <!-- <p class="fw-bold fs-4 text-danger" ><span class=" text-dark">Number of Filtered Products: </span> {{productCat ==='all' || productCat ==='' ?products.length : selectedProducts?.length}}</p> -->
     <div class="d-flex justify-content-center">
       <table class="table table-hover border rounded-3 w-100">
         <thead>

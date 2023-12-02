@@ -5,7 +5,7 @@
 </ngx-spinner>
   Loading...
 </ng-container>
-<div class="container">
+<div class="container overflow-hidden">
   <div class="row">
     <div class="d-flex justify-content-center">
       <div class="input-group w-auto col-md-10 col-sm-4 mt-5 mb-2">
@@ -22,14 +22,6 @@
           [(ngModel)]="customerEmail"
           (ngModelChange)="searchCustomer()"
           />
-        <button
-          class="btn btn-success"
-          type="button"
-          id="button-addon1"
-          data-mdb-ripple-color="dark"
-        >
-          search
-        </button>
       </div>
     </div>
   </div>
