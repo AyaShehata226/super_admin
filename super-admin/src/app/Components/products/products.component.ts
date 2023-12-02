@@ -72,7 +72,11 @@ searchProductCat():void {
 
     }
     this.selectedProducts = this.products.filter(product => product.category === this.productCat.trim());
+    this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);  
+    console.log(this.totalPages);
+    
   }
+
   else{
     this.loadProducts()
   }
