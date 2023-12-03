@@ -17,14 +17,17 @@ export class OrdersComponent implements OnInit {
   currentPage:number =1;
   selectedOrders:IProduct[]=[];
   retDetails:IProduct[]=[];
-  pageSize:number =20;
+  pageSize:number =10;
   totalPages: number=0;  // Total number of pages
   customerCart:IProduct[]=[];
+  sel:IProduct[] = [];
+  orderStatus:string="";
   constructor(public orderSer:OrdersService ,public toastr:ToastrService,private spinner: NgxSpinnerService){ }
   ngOnInit(): void {
     this.loadOrders();
     this.isLoading = true;
-  this.spinner.show();
+    this.spinner.show();
+
   setTimeout(() => {
     this.spinner.hide();
   }, 5000);
@@ -37,7 +40,11 @@ export class OrdersComponent implements OnInit {
         data.Orders = [...data.Orders]
         this.orders.push(...data.Orders ); 
         console.log(this.orders);
+        // console.log(this.orders);
+        
         this.selectedOrders.push(...data.Orders );
+        // console.log(this.selectedOrders);
+        
         this.updateDisplayedOrders();
         this.isLoading = false;
         
@@ -58,5 +65,18 @@ export class OrdersComponent implements OnInit {
     this.updateDisplayedOrders();
     this.totalPages = Math.ceil(this.orders.length / this.pageSize);  
   
+  }
+  searchOrderByStatus():void {
+    if (this.orderStatus.trim()!=="") {
+      if(this.orderStatus.toLowerCase()==="all"){
+        this.sel=this.customerCart;
+      }else{
+        this.sel = this.customerCart.filter(order => order.status===this.orderStatus.trim());
+        console.log(this.sel);
+      }
+      
+      }else{
+        this.loadOrders();
+    }
   }
 }
