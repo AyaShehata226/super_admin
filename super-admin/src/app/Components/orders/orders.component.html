@@ -8,8 +8,8 @@
 </ng-container>
 <div class="container overflow-hidden">
   <div class="input-group w-50 me-2 mt-5 mb-4  ms-5 col-12 ">
-    <label class="input-group-text me-2 rounded " for="categoryDropdown"
-      >status</label
+    <label class="input-group-text me-2 rounded" for="categoryDropdown"
+      style="background-color: rgb(210, 249, 124);">Status</label
     >
     <select
       class="form-select rounded "
@@ -17,7 +17,7 @@
       [(ngModel)]="orderStatus"
       (ngModelChange)="searchOrderByStatus()"
     >
-      <option value="all">All</option>
+      <option value="all" selected>All</option>
       <option value="delivered">delivered</option>
       <option value="shipping">shipping</option>
       <option value="pending">pending</option>
@@ -39,7 +39,7 @@
           </tr>
         </thead>
         <tbody class="text-center ">
-          <tr *ngFor="let ord of orders " >
+          <tr *ngFor="let ord of sel " >
               <td class="mt-5 ">
                 {{ ord.name }}
               </td>
