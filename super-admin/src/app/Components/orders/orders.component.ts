@@ -12,10 +12,11 @@ import { IProduct } from 'src/app/Models/IProducts';
 })
 export class OrdersComponent implements OnInit {
   isLoading: boolean = false ;
-  orders:Orders[]=[];
+  orders:IProduct[]=[];
   productId:string ="";
   currentPage:number =1;
-  selectedOrders:Orders[]=[];
+  selectedOrders:IProduct[]=[];
+  retDetails:IProduct[]=[];
   pageSize:number =20;
   totalPages: number=0;  // Total number of pages
   customerCart:IProduct[]=[];
@@ -24,7 +25,6 @@ export class OrdersComponent implements OnInit {
     this.loadOrders();
     this.isLoading = true;
   this.spinner.show();
-
   setTimeout(() => {
     this.spinner.hide();
   }, 5000);
@@ -33,16 +33,14 @@ export class OrdersComponent implements OnInit {
   loadOrders():void{
     this.orderSer.getAllProducts().subscribe({
       next: (data) => {
+        console.log(data);
         data.Orders = [...data.Orders]
         this.orders.push(...data.Orders ); 
+        console.log(this.orders);
         this.selectedOrders.push(...data.Orders );
         this.updateDisplayedOrders();
         this.isLoading = false;
-        this.orders.map(ord=>{
-          ord.cart_Customer = [...ord.cart_Customer]
-          this.customerCart.push(...ord.cart_Customer)
-          console.log(data.Orders);
-        })
+        
       },
       error: (err) => {
         console.log(err);

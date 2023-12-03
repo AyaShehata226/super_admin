@@ -13,6 +13,7 @@
         <thead>
           <tr class="text-center">
             <th scope="col" class=" ">Retailer Name</th>
+            <th scope="col" class=" ">Retailer Email</th>
             <th scope="col" class=" ">Title</th>
             <th scope="col" class=" ">Status</th>
             <th scope="col">Quantity</th>
@@ -21,37 +22,41 @@
           </tr>
         </thead>
         <tbody class="text-center ">
-          <tr *ngFor="let ord of customerCart" >
-            <td class="mt-5 ">
-              {{ ord.retailer_id }}
-            </td>
-            <td class="fw-bold " style="font-size: 12px">
-              {{ ord.title.toString().split(" ").slice(0, 2).join(" ") }}
-            </td>
-            <td class="">
-              <div
-                [ngStyle]="
-                  ord.status == 'delivered'
-                    ? { 'background-color': 'green' }
-                    : { 'background-color': 'blue' } && ord.status == 'shipping'
-                    ? { 'background-color': 'orange' }
-                    : { 'background-color': 'blue' }
-                "
-                style="height: 40px"
-                class="rounded-3 text-light d-flex justify-content-center align-items-center"
-              >
-                <div>{{ ord.status }}</div>
-              </div>
-            </td>
-            <td class="mt-5">{{ ord.quantity }}</td>
-            <td class="mt-5">{{ ord.price }}</td>
-            <td>
-              <img
-                src="{{ ord.img }}"
-                class="rounded-circle"
-                style="width: 40px; height: 40px"
-              />
-            </td>
+          <tr *ngFor="let ord of orders " >
+              <td class="mt-5 ">
+                {{ ord.name }}
+              </td>
+              <td class="mt-5 ">
+                {{ ord.email }}
+              </td>
+              <td class="fw-bold " style="font-size: 12px">
+                {{ ord.title.toString().split(" ").slice(0, 2).join(" ") }}
+              </td>
+              <td class="">
+                <div
+                  [ngStyle]="
+                    ord.status == 'delivered'
+                      ? { 'background-color': 'green' }
+                      : { 'background-color': 'blue' } && ord.status == 'shipping'
+                      ? { 'background-color': 'orange' }
+                      : { 'background-color': 'blue' }
+                  "
+                  style="height: 40px"
+                  class="rounded-3 text-light d-flex justify-content-center align-items-center"
+                >
+                  <div>{{ ord.status }}</div>
+                </div>
+              </td>
+              <td class="mt-5">{{ ord.quantity }}</td>
+              <td class="mt-5">{{ ord.price }}</td>
+              <td>
+                <img
+                  src="{{ ord.img }}"
+                  class="rounded-circle"
+                  style="width: 40px; height: 40px"
+                />
+              </td>
+            
           </tr>
         </tbody>
       </table>

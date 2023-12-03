@@ -22,7 +22,7 @@ export class CardsComponent implements OnInit {
   orders:Orders[]=[];
   productId:string ="";
   currentPage:number =1;
-  selectedOrders:Orders[]=[];
+  selectedOrders:IProduct[]=[];
   pageSize:number =20;
   totalPages: number=0;  // Total number of pages
   customerCart:IProduct[]=[];
@@ -79,10 +79,7 @@ export class CardsComponent implements OnInit {
         this.orders.push(...data.Orders ); 
         this.selectedOrders.push(...data.Orders );
         this.isLoading = false;
-        this.orders.map(ord=>{
-          ord.cart_Customer = [...ord.cart_Customer]
-          this.customerCart.push(...ord.cart_Customer)
-        })
+        
       },
       error: (err) => {
         console.log(err);
