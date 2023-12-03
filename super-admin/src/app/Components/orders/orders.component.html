@@ -39,7 +39,6 @@
           </tr>
         </thead>
         <tbody class="text-center ">
-<<<<<<< HEAD
           <tr *ngFor="let ord of orders " >
               <td class="mt-5 ">
                 {{ ord.name }}
@@ -75,39 +74,6 @@
                 />
               </td>
             
-=======
-          <tr *ngFor="let ord of sel" >
-            <td class="mt-5 ">
-              {{ ord.retailer_id }}
-            </td>
-            <td class="fw-bold " style="font-size: 12px">
-              {{ ord.title.toString().split(" ").slice(0, 2).join(" ") }}
-            </td>
-            <td class="">
-              <div
-                [ngStyle]="
-                  ord.status == 'delivered'
-                    ? { 'background-color': 'green' }
-                    : { 'background-color': 'blue' } && ord.status == 'shipping'
-                    ? { 'background-color': 'orange' }
-                    : { 'background-color': 'blue' }
-                "
-                style="height: 40px"
-                class="rounded-3 text-light d-flex justify-content-center align-items-center"
-              >
-                <div>{{ ord.status }}</div>
-              </div>
-            </td>
-            <td class="mt-5">{{ ord.quantity }}</td>
-            <td class="mt-5">{{ ord.price }}</td>
-            <td>
-              <img
-                src="{{ ord.img }}"
-                class="rounded-circle"
-                style="width: 40px; height: 40px"
-              />
-            </td>
->>>>>>> 723f243a9b0934ce24fae887de4785d05e00bc72
           </tr>
         </tbody>
       </table>
