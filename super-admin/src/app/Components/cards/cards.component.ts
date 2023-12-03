@@ -1,5 +1,5 @@
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnDestroy } from '@angular/core';
 import { CustomersService } from 'src/app/Services/customers/customers.service';
 import { Customers } from 'src/app/Models/customers';
 import { ProductsService } from 'src/app/Services/Products/products.service';
@@ -12,74 +12,82 @@ import { Orders } from './../../Models/orders';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.scss']
+  styleUrls: ['./cards.component.scss'],
+
 })
-export class CardsComponent implements OnInit {
-  customers:Customers[]=[];
-  products:IProduct[]=[];
-  Retailers:Retailer[]=[];
+export class CardsComponent implements OnDestroy  {
+   public customers:Customers[]=[];
+   public products:IProduct[]=[];
+   public Retailers:Retailer[]=[];
   isLoading:boolean = false;
-  orders:Orders[]=[];
+   public orders:Orders[]=[];
   productId:string ="";
   currentPage:number =1;
   selectedOrders:IProduct[]=[];
   pageSize:number =20;
   totalPages: number=0;  // Total number of pages
   customerCart:IProduct[]=[];
-  constructor(public orderSer:OrdersService,private spinner: NgxSpinnerService,public customersSer:CustomersService ,public prdService:ProductsService ,public RetService:RetailersService){}
-  
-  ngOnInit(): void {
+  dataLoaded = false;
+  constructor(public orderSer:OrdersService,private spinner: NgxSpinnerService,public customersSer:CustomersService ,public prdService:ProductsService ,public RetService:RetailersService){
     this.loadOrders();
-    this.isLoading = true;
-    this.spinner.show();
-  setTimeout(() => {
-    this.spinner.hide();
-  }, 5000);
-
-    this.customersSer.getAllCustomers().subscribe({
-      next:(data)=>{
-        data.customers = [... new Set(data.customers)]
-        this.customers.push(...data.customers);
-        console.log(data);
-        this.isLoading = false;
-      },
-      error:(err)=>{
-        console.log(err); 
-      }
-    })
-
-    this.prdService.getAllProducts().subscribe({
-      next: (data) => {
-        this.products = data;
-        console.log(this.products);
-        this.isLoading = false;
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
-
-    this.RetService.getAllRetailers().subscribe({
-      next:(data)=>{
-        this.Retailers=data;
-        console.log(this.Retailers);
-        this.isLoading = false;
-      },
-      error:(err)=>{
-        console.log("error"); 
-      }
-    })
+    this.loadRetailers();
+    this.loadCustomers();
+    this.loadProducts();
+    setTimeout(() => {
+    }, 3000);
   }
-
   
+ 
+
+  ngOnDestroy():void{
+    this.loadOrders();
+    this.loadRetailers();
+    this.loadCustomers();
+    this.loadProducts();
+  }
+  
+  loadRetailers():any{
+  this.RetService.getAllRetailers().subscribe({
+    next:(data:any)=>{
+      this.Retailers=data;
+      this.isLoading = false;
+    },
+    error:(err)=>{
+      console.log("error"); 
+    }
+  })
+}
+
+loadProducts():any{
+  this.prdService.getAllProducts().subscribe({
+    next: (data:any) => {
+      this.products = data;
+      this.isLoading = false;
+    },
+    error: (err) => {
+      console.log(err);
+    }
+  });
+}
+  loadCustomers():any{
+  this.customersSer.getAllCustomers().subscribe({
+    next:(data:any)=>{
+      data.customers = [... new Set(data.customers)]
+      this.customers.push(...data.customers);
+      this.isLoading = false;
+    },
+    error:(err)=>{
+      console.log(err); 
+    }
+  })}
+
   loadOrders():void{
     this.orderSer.getAllProducts().subscribe({
-      next: (data) => {
+      next: (data:any) => {
         data.Orders = [...data.Orders]
         this.orders.push(...data.Orders ); 
         this.selectedOrders.push(...data.Orders );
         this.isLoading = false;
-        
       },
       error: (err) => {
         console.log(err);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import Chart from 'chart.js/auto';
 @Component({
   selector: 'app-line-chart',
@@ -8,27 +8,59 @@ import Chart from 'chart.js/auto';
 
 export class LineChartComponent implements OnInit {
   public chart: any;
-  
+  @Input() Retailers: any;
+  @Input() products: any;
+  @Input() orders: any;
+  @Input() customers: any;
+  public x :number = .8;
   createChart(){
     this.chart = new Chart("MyLineChart", {
-      type: 'line', //this denotes tha type of chart
+      type: 'bar', //this denotes tha type of chart
 
       data: {
-        labels: ['asd','asd'],
+        labels: ['Retailers','Orders', 'Customers' , 'Products'],
         datasets: [{
-          label: 'My First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
+          label: 'All Data  ',
+          data: [this.Retailers, this.orders , this.customers , this.products],
+          backgroundColor: 'rgba(75, 192, 192)',
+            borderColor: 'rgba(200, 100, 200, 1)',
+            borderWidth: 1,
+
         }]
       },
-     
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+          },
+        },
+        layout: {
+          padding: {
+            left: 10,
+            right: 10,
+            top: 0,
+            bottom: 0,
+          },
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        aspectRatio: 2,
+        indexAxis: 'x',
+
+      }
       
     });
   }
   ngOnInit(): void {
-    this.createChart();
+    setTimeout(()=>{
+      this.createChart();
+      this.createChart();
+    },2000);
   }
-
 }

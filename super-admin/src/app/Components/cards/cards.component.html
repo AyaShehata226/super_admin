@@ -5,12 +5,12 @@
             <h5 class="b">Customers</h5>
             <p class="mb-2  h-100">{{customers.length}}</p><br>
           </div>
-          <div class=" carded col-md-2 col-sm-3 rounded" style="background-color: #f89696;">
+          <div class=" carded col-md-2 col-sm-3 rounded" style="background-color: #DBB2D1;">
               <mat-icon class="mt-4 mb-2">dns</mat-icon>
               <h5 class="b">Orders</h5>
               <p class="mb-2  h-100">{{orders.length}}</p><br>
             </div>
-            <div class=" carded col-md-2 col-sm-3 rounded" style="background-color:rgb(252, 159, 230);">
+            <div class=" carded col-md-2 col-sm-3 rounded" style="background-color:#fc9fe6;">
               <mat-icon class="mt-4 mb-2">shopping_cart</mat-icon>
               <h5 class="b">Products</h5>
               <p class="mb-2  h-100">{{products.length}}</p><br>
@@ -20,5 +20,25 @@
                 <h5 class="b">Retailers</h5>
                 <p class="mb-2  h-100">{{Retailers.length}}</p><br>
               </div>   
+              <div class="row d-flex justify-content-evenly">
+                <div class="col-12 col-md-4 p-5">
+                    <app-bar-chart
+                    [Retailers]="Retailers.length"
+                    [products]="products.length"
+                    [orders]="orders.length"
+                    [customers]="customers.length"
+                   ></app-bar-chart>
+                </div>
+                <div class="col-12 col-md-6 mt-5 align-items-center">
+                  <app-line-chart
+                  [Retailers]="Retailers.length"
+                  [products]="products.length"
+                  [orders]="orders.length"
+                  [customers]="customers.length"
+                 ></app-line-chart>
+                     </div>
+            </div>
+            
+            
     </div>
 </div>

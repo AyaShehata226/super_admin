@@ -1,38 +1,70 @@
-import { Component, OnInit } from '@angular/core';
+import { IProduct } from 'src/app/Models/IProducts';
+import { Component, Input, OnInit , OnChanges, SimpleChanges } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { ProductsService } from 'src/app/Services/Products/products.service';
+import { RetailersService } from 'src/app/Services/Retailers/retailers.service';
+import { CustomersService } from 'src/app/Services/customers/customers.service';
+import { OrdersService } from 'src/app/Services/orders/orders.service';
 
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.scss']
 })
+
 export class BarChartComponent implements OnInit {
+  //  entry: any;
+  @Input() Retailers: any;
+  @Input() products: any;
+  @Input() orders: any;
+  @Input() customers: any;
+  dataLoaded = false;
+  isLoading:boolean = false;
+  productId:string ="";
+  selectedOrders:IProduct[]=[];
+  public arr:number[] = [];
   public chart: any;
-  createChart(){
+
+  constructor(public orderSer:OrdersService,public customersSer:CustomersService ,
+    public prdService:ProductsService ,public RetService:RetailersService){
+    
+    }
+  
+  createChart(){ 
+  
+    console.log(this.orders , this.Retailers);
+    if (this.chart) {
+      this.chart.destroy();
+    }  
     this.chart = new Chart("MyChart", {
-      type: 'pie', //this denotes tha type of chart
+      type: 'pie', //this denotes the type of chart
 
       data: {labels: [
-        'Red',
-        'Blue',
-        'Yellow'
+        'Retailers',
+        'Products',
+        'Customers',
+        'Orders'
       ],
       datasets: [{
-        label: 'My First Dataset',
-        data: [300, 50, 100],
+        label: 'All Data',
+        data: [this.Retailers, this.products, this.customers , this.orders ],
         backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)'
+          'blue',
+          'gray',
+          'brown',
+          'green'
         ],
-        hoverOffset: 4
+        hoverOffset: 5
       }]
       },
-     
-      
     });
   }
+
   ngOnInit(): void {
-    this.createChart();
+    setTimeout(()=>{
+      this.createChart();
+    },2000);
   }
+
+
 }
