@@ -17,6 +17,7 @@
           class="form-select rounded "
           id="categoryDropdown"
           [(ngModel)]="productCat"
+          (ngModelChange)="searchProductCat()"
         >
           <option value="all" selected>All</option>
           <option
@@ -26,15 +27,6 @@
             {{ category.cat_title }}
           </option>
         </select>
-        <button
-          class="btn btn-success"
-          type="button"
-          id="button-addon1"
-          data-mdb-ripple-color="dark"
-          (click)="searchProductCat()"
-        >
-          search
-        </button>
       </div>
       <div class="input-group w-50 col-md-10 col-sm-6 mt-2 mb-2">
         <label class="input-group-text me-2 rounded" for="categoryDropdown"
@@ -45,33 +37,34 @@
           class="form-control rounded"
           placeholder="Enter your brand"
           [(ngModel)]="productBrand"
+          (ngModelChange)="searchProductbrand()"
         />
-        <button
-          class="btn btn-success"
-          type="button"
-          id="button-addon1"
-          data-mdb-ripple-color="dark"
-          (click)="searchProductbrand()"
-        >
-          search
-        </button>
       </div>
     </div>
   </div>
   <div class="row table-responsive-md table-responsive-sm m-5">
-    <p class="fw-bold fs-4 text-danger" ><span class=" text-dark">Number of Products: </span> {{products.length}}</p>
-    <p class="fw-bold fs-4 text-danger" ><span class=" text-dark">Number of Filtered Products: </span> {{productCat ==='all' || productCat ==='' ?products.length : selectedProducts.length}}</p>
-    
+    <div class="row d-flex justify-content-evenly text-center mb-5" >
+    <div class=" carded col-md-2 col-sm-3 rounded"  style="background-color:#f2d4ea;">
+      <mat-icon class="mt-4 mb-2">shopping_cart</mat-icon>
+      <h5 class="b">Number of Products:</h5>
+    <p class="fw-bold fs-4 text-danger" ><span class=" text-dark"> </span> {{products.length}}</p> 
+    </div>
+    <div class=" carded col-md-2 col-sm-3 rounded" style="background-color:#f2d4ea;">
+        <mat-icon class="mt-4 mb-2">store</mat-icon>
+        <h5 class="b">Number of Filtered Products:</h5>
+        <p class="fw-bold fs-4 text-danger" ><span class=" text-dark"> </span> {{selectedProducts.length}}</p> 
+      </div> 
+    </div>
     <div class="d-flex justify-content-center">
       <table class="table table-hover border rounded-3 w-100">
         <thead>
           <tr class="text-center">
-            <th scope="col">Name</th>
-            <th scope="col">stock</th>
-            <th scope="col">quantity</th>
-            <th scope="col">brand</th>
-            <th scope="col">category</th>
-            <th scope="col" class="">image</th>
+            <th scope="col">Title</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Category</th>
+            <th scope="col" class="">Image</th>
             <th>Delete</th>
           </tr>
         </thead>

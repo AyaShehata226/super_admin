@@ -71,15 +71,19 @@ searchProductCat():void {
       
 
     }
-    this.selectedProducts = this.products.filter(product => product.category === this.productCat.trim());
+    this.selectedProducts = this.products.filter(product => product.category.includes(this.productCat.trim()));
+    this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);  
+    console.log(this.totalPages);
+    
   }
+
   else{
     this.loadProducts()
   }
 }
 searchProductbrand():void {
   if (this.productBrand.trim()!=="") {
-    this.selectedProducts = this.products.filter(product => product.brand === this.productBrand.trim());
+    this.selectedProducts = this.products.filter(product => product.brand.includes(this.productBrand.trim()));
   }
   else{
     this.loadProducts()

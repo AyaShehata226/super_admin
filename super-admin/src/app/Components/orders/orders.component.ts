@@ -41,6 +41,7 @@ export class OrdersComponent implements OnInit {
         this.orders.map(ord=>{
           ord.cart_Customer = [...ord.cart_Customer]
           this.customerCart.push(...ord.cart_Customer)
+          console.log(data.Orders);
         })
       },
       error: (err) => {
