@@ -39,11 +39,11 @@ export class OrdersComponent implements OnInit {
         console.log(data);
         data.Orders = [...data.Orders]
         this.orders.push(...data.Orders ); 
-        console.log(this.orders);
         // console.log(this.orders);
         
         this.selectedOrders.push(...data.Orders );
-        // console.log(this.selectedOrders);
+        console.log(this.selectedOrders);
+        this.sel=this.orders
         
         this.updateDisplayedOrders();
         this.isLoading = false;
@@ -69,9 +69,11 @@ export class OrdersComponent implements OnInit {
   searchOrderByStatus():void {
     if (this.orderStatus.trim()!=="") {
       if(this.orderStatus.toLowerCase()==="all"){
-        this.sel=this.customerCart;
+        this.sel=this.orders;
+        console.log(this.sel);
+        
       }else{
-        this.sel = this.customerCart.filter(order => order.status===this.orderStatus.trim());
+        this.sel = this.orders.filter(order => order.status===this.orderStatus.trim());
         console.log(this.sel);
       }
       
