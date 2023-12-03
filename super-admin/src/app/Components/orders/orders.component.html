@@ -7,6 +7,23 @@
   Loading...
 </ng-container>
 <div class="container overflow-hidden">
+  <div class="input-group w-50 me-2 mt-5 mb-4  ms-5 col-12 ">
+    <label class="input-group-text me-2 rounded " for="categoryDropdown"
+      >status</label
+    >
+    <select
+      class="form-select rounded "
+      id="categoryDropdown"
+      [(ngModel)]="orderStatus"
+      (ngModelChange)="searchOrderByStatus()"
+    >
+      <option value="all">All</option>
+      <option value="delivered">delivered</option>
+      <option value="shipping">shipping</option>
+      <option value="pending">pending</option>
+
+    </select>
+  </div>
   <div class="row table-responsive-md table-responsive-sm m-5">
     <div class="d-flex justify-content-center row">
       <table class="table table-hover border w-100 border-black">
@@ -21,7 +38,7 @@
           </tr>
         </thead>
         <tbody class="text-center ">
-          <tr *ngFor="let ord of customerCart" >
+          <tr *ngFor="let ord of sel" >
             <td class="mt-5 ">
               {{ ord.retailer_id }}
             </td>

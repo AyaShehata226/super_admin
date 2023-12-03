@@ -25,4 +25,8 @@ export class RetailersService {
   }
   )
   }
+  deleteRetailerById(RetailerId: string): Observable<void> {
+    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.httpclient.delete<void>(`${environment.BaseApiURL}/retailer/admin/${RetailerId}`);
+  }
 }

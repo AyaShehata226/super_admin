@@ -41,7 +41,7 @@
                 <td>{{ret.products.length}}</td>
                 <td>{{ret.phone}}</td>
                 <td>
-                  <button type="button" class="btn text-danger">
+                  <button type="button" class="btn text-danger" (click)="deleteRetailer(ret._id)">
                     <mat-icon>delete</mat-icon>
                   </button>
                 </td>
