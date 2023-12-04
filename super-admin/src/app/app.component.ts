@@ -18,7 +18,6 @@ export class AppComponent implements OnInit,OnChanges {
 this.adminSrv.adminLogged$.subscribe(
   (data)=>{
     this.flag=data
-    console.log(this.flag);
   }
 );
 

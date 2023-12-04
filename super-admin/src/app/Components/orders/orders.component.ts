@@ -36,13 +36,11 @@ export class OrdersComponent implements OnInit {
   loadOrders():void{
     this.orderSer.getAllProducts().subscribe({
       next: (data) => {
-        console.log(data);
         data.Orders = [...data.Orders]
         this.orders.push(...data.Orders ); 
         // console.log(this.orders);
         
         this.selectedOrders.push(...data.Orders );
-        console.log(this.selectedOrders);
         this.sel=this.orders
         
         this.updateDisplayedOrders();
@@ -70,7 +68,6 @@ export class OrdersComponent implements OnInit {
     if (this.orderStatus.trim()!=="") {
       if(this.orderStatus.toLowerCase()==="all"){
         this.sel=this.orders;
-        console.log(this.sel);
         
       }else{
         this.sel = this.orders.filter(order => order.status===this.orderStatus.trim());

@@ -32,7 +32,6 @@ export class BarChartComponent implements OnInit {
   
   createChart(){ 
   
-    console.log(this.orders , this.Retailers);
     if (this.chart) {
       this.chart.destroy();
     }  

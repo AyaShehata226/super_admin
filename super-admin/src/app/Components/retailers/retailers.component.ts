@@ -38,7 +38,6 @@ loadRetailers(): void{
     next:(data)=>{
       this.Retailers=data;
       this.selectRetailer=data;
-      console.log(this.selectRetailer);
       // this.updateDisplayRetailer();
       for(let i = 0 ; i < data.length; i++){
         this.RetailerId.push(data[i]._id);
@@ -74,7 +73,6 @@ loadRetailersPrds(id:string):void{
 searchRetailer(): void {
   if (this.RetailerEmail.trim()!=="") {
     this.selectRetailer = this.Retailers.filter(Retailer => Retailer.email.includes(this.RetailerEmail.trim()));
-    console.log(this.selectRetailer);
 
   }else{
     this.loadRetailers();
@@ -89,7 +87,6 @@ onPageChange(page: number): void {
   this.currentPage = page;
   this.updateDisplayRetailer();
   this.totalPages = Math.ceil(this.Retailers.length / this.pageSize);  
-  console.log(this.totalPages);
 }
 deleteRetailer(retailerId: string): void {
   this.confirm.showConfirm("Are you sure want to delete?",

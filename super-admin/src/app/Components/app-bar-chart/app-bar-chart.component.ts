@@ -13,7 +13,6 @@ export class AppBarChartComponent {
   @Input() customers: any;
   public x :number = .8;
   createChart(){
-    console.log(this.Retailers);
     this.chart = new Chart("MyBarrChart", {
       
       type: 'line', //this denotes tha type of chart
