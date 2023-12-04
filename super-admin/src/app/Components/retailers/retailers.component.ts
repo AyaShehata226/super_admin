@@ -16,7 +16,7 @@ export class RetailersComponent implements OnInit {
   RetailerId:string[]=[];
   selectRetailer:Retailer[]=[];
   retailerPrds = [];
-  pageSize:number =3;
+  pageSize:number =10;
   currentPage:number =1;
   totalPages: number=0;
   isLoading: boolean = false ;

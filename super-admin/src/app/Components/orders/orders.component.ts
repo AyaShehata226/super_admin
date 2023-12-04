@@ -17,7 +17,7 @@ export class OrdersComponent implements OnInit {
   currentPage:number =1;
   selectedOrders:IProduct[]=[];
   retDetails:IProduct[]=[];
-  pageSize:number =5;
+  pageSize:number =10;
   totalPages: number=0;  // Total number of pages
   customerCart:IProduct[]=[];
   sel:IProduct[] = [];
@@ -42,7 +42,6 @@ export class OrdersComponent implements OnInit {
         
         this.selectedOrders.push(...data.Orders );
         this.sel=this.orders
-        
         this.updateDisplayedOrders();
         this.isLoading = false;
         
@@ -56,7 +55,7 @@ export class OrdersComponent implements OnInit {
 
   updateDisplayedOrders():void{
     const startIndex = (this.currentPage - 1) * this.pageSize;
-    this.selectedOrders = this.orders.slice(startIndex, startIndex + this.pageSize);
+    this.sel = this.orders.slice(startIndex, startIndex + this.pageSize);
   }
   onPageChange(page: number): void {
     this.currentPage = page;
