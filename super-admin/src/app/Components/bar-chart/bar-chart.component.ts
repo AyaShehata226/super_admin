@@ -48,10 +48,10 @@ export class BarChartComponent implements OnInit {
         label: 'All Data',
         data: [this.Retailers, this.products, this.customers , this.orders ],
         backgroundColor: [
-          'blue',
-          'gray',
-          'brown',
-          'green'
+          '#DBB2D1',
+          '#B2DBD3',
+          '#9FAAFC',
+          '#F2D4D4'
         ],
         hoverOffset: 5
       }]

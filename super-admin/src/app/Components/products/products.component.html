@@ -1,9 +1,8 @@
 <ng-container *ngIf="isLoading">
-  <ngx-spinner
-    bdColor="rgba(0, 0, 0, 1)"
-    template="<img  class='img-fluid w-75' src='assets/E-commerce image.gif' />"
-  >
-  </ngx-spinner>
+  <ngx-spinner 
+  bdColor="white"
+  template="<img  class='img-fluid w-100' src='assets/shopping-loader.gif' />">
+</ngx-spinner>
   Loading...
 </ng-container>
 <div class="container overflow-hidden ">
@@ -11,8 +10,7 @@
     <div class=" row d-flex align-items-center justify-content-center ">
       <div class="input-group w-50 me-2 mt-5 mb-4 col-12">
         <label class="input-group-text me-2 rounded " for="categoryDropdown"
-        style="background-color: rgb(210, 249, 124);"
-          >Categories</label
+        style="background-color: rgb(0, 0, 0); color:white"          >Categories</label
         >
         <select
           class="form-select rounded "
@@ -31,8 +29,7 @@
       </div>
       <div class="input-group w-50 col-md-10 col-sm-6 mt-2 mb-2">
         <label class="input-group-text me-2 rounded" for="categoryDropdown"
-        style="background-color: rgb(210, 249, 124);"
-          >Brand</label
+        style="background-color: rgb(0, 0, 0); color:white"          >Brand</label
         >
         <input
           type="text"
