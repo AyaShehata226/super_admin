@@ -93,7 +93,7 @@ deleteRetailer(retailerId: string): void {
     () => {
       this.RetService.deleteRetailerById(retailerId).subscribe(
         () => {
-          this.selectRetailer = this.selectRetailer.filter(retailer => retailer._id !== retailer._id);
+          this.selectRetailer = this.selectRetailer.filter(retailer => retailer._id !== retailerId);
         },
         (error) => {
           console.error(error);

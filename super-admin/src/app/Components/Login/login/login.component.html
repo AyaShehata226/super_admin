@@ -9,7 +9,7 @@
       </div>
         <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email">Email</label>
             <input type="email" id="form3Example3" name="email" formControlName="email"
             [ngClass]="{'is-invalid':(email?.touched || email?.dirty)&&email?.invalid}" required email
             class="form-control" />
@@ -19,7 +19,7 @@
           </span>
         </div>
           <div class="form-group">
-            <label for="password">Password:</label>
+            <label for="password">Password</label>
             <input type={{type}} id="form3Example3" name="password" minlength="5" formControlName="password"
             [ngClass]="{'is-invalid':(password?.touched || password?.dirty)&&password?.invalid}" required 
             class="form-control" />
