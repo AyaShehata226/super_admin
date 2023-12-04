@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit{
     if (this.adminForm.valid) {
       this.adminSrv.login(this.adminForm.value).subscribe(
         (response) => {
-          console.log('login successful!', response);
+          // console.log('login successful!', response);
           swal.fire({
             title: 'login  successful!',
             icon: 'success',

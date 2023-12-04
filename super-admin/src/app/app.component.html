@@ -89,5 +89,11 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div> -->
-<app-group-of-components></app-group-of-components>
-<router-outlet></router-outlet>
+<div *ngIf="flag">
+  <app-group-of-components></app-group-of-components>
+</div>
+<div *ngIf="!flag">
+  <router-outlet></router-outlet>
+
+</div>
+

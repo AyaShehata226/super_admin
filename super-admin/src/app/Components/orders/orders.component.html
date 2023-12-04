@@ -6,24 +6,27 @@
   </ngx-spinner>
   Loading...
 </ng-container>
-<div class="container overflow-hidden">
-  <div class="input-group w-50 me-2 mt-5 mb-4  ms-5 col-12 ">
-    <label class="input-group-text me-2 rounded" for="categoryDropdown"
-      style="background-color: rgb(210, 249, 124);">Status</label
-    >
-    <select
-      class="form-select rounded "
-      id="categoryDropdown"
-      [(ngModel)]="orderStatus"
-      (ngModelChange)="searchOrderByStatus()"
-    >
-      <option value="all" selected>All</option>
-      <option value="delivered">delivered</option>
-      <option value="shipping">shipping</option>
-      <option value="pending">pending</option>
-
-    </select>
+<div class="container overflow-hidden ">
+  <div class=" w-100 d-flex justify-content-center">
+    <div class="input-group w-50  me-2 mt-5 mb-2   ms-5 col-12 ">
+      <label class="input-group-text me-2 rounded" for="categoryDropdown"
+        style="background-color: rgb(210, 249, 124);">Status</label
+      >
+      <select
+        class="form-select rounded "
+        id="categoryDropdown"
+        [(ngModel)]="orderStatus"
+        (ngModelChange)="searchOrderByStatus()"
+      >
+        <option value="all" selected>All</option>
+        <option value="delivered">delivered</option>
+        <option value="shipping">shipping</option>
+        <option value="pending">pending</option>
+  
+      </select>
+    </div>
   </div>
+ 
   <div class="row table-responsive-md table-responsive-sm m-5">
     <div class="d-flex justify-content-center row">
       <table class="table table-hover border w-100 border-black">
