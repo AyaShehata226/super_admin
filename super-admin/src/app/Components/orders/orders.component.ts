@@ -17,7 +17,7 @@ export class OrdersComponent implements OnInit {
   currentPage:number =1;
   selectedOrders:IProduct[]=[];
   retDetails:IProduct[]=[];
-  pageSize:number =10;
+  pageSize:number =5;
   totalPages: number=0;  // Total number of pages
   customerCart:IProduct[]=[];
   sel:IProduct[] = [];

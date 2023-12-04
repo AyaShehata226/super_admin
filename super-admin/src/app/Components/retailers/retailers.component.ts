@@ -16,7 +16,7 @@ export class RetailersComponent implements OnInit {
   RetailerId:string[]=[];
   selectRetailer:Retailer[]=[];
   retailerPrds = [];
-  pageSize:number =10;
+  pageSize:number =3;
   currentPage:number =1;
   totalPages: number=0;
   isLoading: boolean = false ;
@@ -38,7 +38,7 @@ loadRetailers(): void{
     next:(data)=>{
       this.Retailers=data;
       this.selectRetailer=data;
-      // this.updateDisplayRetailer();
+      this.updateDisplayRetailer();
       for(let i = 0 ; i < data.length; i++){
         this.RetailerId.push(data[i]._id);
       }

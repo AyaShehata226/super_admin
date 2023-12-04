@@ -57,7 +57,6 @@
       </button>
       <span class="m-3  p-2">{{ currentPage}}</span>
       <span class="m-3  p-2">{{ currentPage+1}}</span>
-      <span class="m-3  p-2">{{ currentPage+2}}</span>
       <button class="btn border" (click)="onPageChange(currentPage + 1)" [disabled]="currentPage == totalPages">
          <mat-icon class="mt-2 ms-2 ">arrow_forward_ios</mat-icon>
       </button>
