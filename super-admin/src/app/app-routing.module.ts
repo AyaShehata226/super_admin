@@ -13,7 +13,7 @@ import { adminGuardGuard } from './Guards/admin-guard.guard';
 import { GroupOfComponentsComponent } from './Components/group-of-components/group-of-components.component';
 
 const routes: Routes = [
-  {path:'' , redirectTo:'/dashboard' , pathMatch: 'full',},
+  {path:'' , redirectTo:'/dashboard' , pathMatch: 'full'},
   {path: 'dashboard' , component:DashboardComponent , title: 'dashboard page',canActivate:[adminGuardGuard]},
   {path: 'products' , component:ProductsComponent , title: 'products page',canActivate:[adminGuardGuard]},
   {path: 'customers' , component:CustomersComponent , title: 'customers page' , canActivate:[adminGuardGuard]},

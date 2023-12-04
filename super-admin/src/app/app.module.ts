@@ -30,6 +30,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {NgConfirmModule} from 'ng-confirm-box';
 import { GroupOfComponentsComponent } from './Components/group-of-components/group-of-components.component';
+import { AppBarChartComponent } from './Components/app-bar-chart/app-bar-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { GroupOfComponentsComponent } from './Components/group-of-components/gro
     BarChartComponent,
     LineChartComponent,
     GroupOfComponentsComponent,
+    AppBarChartComponent,
   ],
   imports: [
     BrowserModule,
