@@ -35,7 +35,6 @@ loadCustomers():void{
       data.customers = [... new Set(data.customers)]
       
       this.customers.push(...data.customers);
-      console.log(this.customers);
       
       this.selectCustomer.push(...data.customers)
       this.isLoading = false;
@@ -48,8 +47,7 @@ loadCustomers():void{
 }
 searchCustomer(): void {
     if (this.customerEmail.trim()!=="") {
-      this.selectCustomer = this.customers.filter(customer => customer.email === this.customerEmail.trim());
-      console.log(this.selectCustomer);
+      this.selectCustomer = this.customers.filter(customer => customer.email.includes(this.customerEmail.trim()));
     }else{
       this.loadCustomers();
     }
@@ -62,7 +60,6 @@ searchCustomer(): void {
     this.currentPage = page;
     this.updateDisplayCutomers();
     this.totalPages = Math.ceil(this.customers.length / this.pageSize);  
-    console.log(this.totalPages);
   }
 
   deleteCustomer(custmoerId: number): void {

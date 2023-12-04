@@ -1,12 +1,11 @@
 import { Component, OnInit,Input } from '@angular/core';
 import Chart from 'chart.js/auto';
 @Component({
-  selector: 'app-line-chart',
-  templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.scss']
+  selector: 'app-app-bar-chart',
+  templateUrl: './app-bar-chart.component.html',
+  styleUrls: ['./app-bar-chart.component.scss']
 })
-
-export class LineChartComponent implements OnInit {
+export class AppBarChartComponent {
   public chart: any;
   @Input() Retailers: any;
   @Input() products: any;
@@ -14,8 +13,9 @@ export class LineChartComponent implements OnInit {
   @Input() customers: any;
   public x :number = .8;
   createChart(){
-    this.chart = new Chart("MyLineChart", {
-      type: 'bar', //this denotes tha type of chart
+    this.chart = new Chart("MyBarrChart", {
+      
+      type: 'line', //this denotes tha type of chart
 
       data: {
         labels: ['Retailers','Orders', 'Customers' , 'Products'],
@@ -64,3 +64,10 @@ export class LineChartComponent implements OnInit {
     },2000);
   }
 }
+
+
+
+
+
+
+

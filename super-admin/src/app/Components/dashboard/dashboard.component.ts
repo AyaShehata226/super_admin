@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   changeValue (newVlaue:boolean){
     this.opened = newVlaue;
     console.log(this.opened);
+    
   }
   constructor(private spinner: NgxSpinnerService){
     

@@ -1,15 +1,16 @@
 <ng-container *ngIf="isLoading">
   <ngx-spinner 
   bdColor="rgba(0, 0, 0, 1)"
-  template="<img  class='img-fluid' src='assets/E-commerce image.gif' />">
+  template="<img  class='img-fluid w-75' src='assets/E-commerce image.gif' />">
 </ngx-spinner>
   Loading...
 </ng-container>
-<div class="container">
+<div class="container overflow-hidden">
   <div class="row">
     <div class="d-flex justify-content-center">
       <div class="input-group w-auto col-md-10 col-sm-4 mt-5 mb-2">
         <span class="input-group-text me-2 rounded" id="basic-addon1"
+        style="background-color: rgb(210, 249, 124);"
           >Email</span
         >
 
@@ -20,16 +21,8 @@
           aria-label="Example input"
           aria-describedby="button-addon1"
           [(ngModel)]="customerEmail"
-        />
-        <button
-          class="btn btn-success"
-          type="button"
-          id="button-addon1"
-          data-mdb-ripple-color="dark"
-          (click)="searchCustomer()"
-        >
-          search
-        </button>
+          (ngModelChange)="searchCustomer()"
+          />
       </div>
     </div>
   </div>

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Retailer } from './../../Models/Retailers';
 import { RetailersService } from 'src/app/Services/Retailers/retailers.service';
 import { IProduct } from 'src/app/Models/IProducts';
+import { NgConfirmService } from 'ng-confirm-box';
 
 @Component({
   selector: 'app-retailers',
@@ -20,7 +21,7 @@ export class RetailersComponent implements OnInit {
   totalPages: number=0;
   isLoading: boolean = false ;
   counter:number = 0;
-constructor(public RetService:RetailersService , private spinner: NgxSpinnerService){}
+constructor(public RetService:RetailersService , private spinner: NgxSpinnerService ,private confirm:NgConfirmService){}
 ngOnInit(): void {
   this.loadRetailers();
   this.isLoading = true;
@@ -37,7 +38,6 @@ loadRetailers(): void{
     next:(data)=>{
       this.Retailers=data;
       this.selectRetailer=data;
-      console.log(this.selectRetailer);
       // this.updateDisplayRetailer();
       for(let i = 0 ; i < data.length; i++){
         this.RetailerId.push(data[i]._id);
@@ -72,8 +72,7 @@ loadRetailersPrds(id:string):void{
 
 searchRetailer(): void {
   if (this.RetailerEmail.trim()!=="") {
-    this.selectRetailer = this.Retailers.filter(Retailer => Retailer.email === this.RetailerEmail.trim());
-    console.log(this.selectRetailer);
+    this.selectRetailer = this.Retailers.filter(Retailer => Retailer.email.includes(this.RetailerEmail.trim()));
 
   }else{
     this.loadRetailers();
@@ -88,6 +87,22 @@ onPageChange(page: number): void {
   this.currentPage = page;
   this.updateDisplayRetailer();
   this.totalPages = Math.ceil(this.Retailers.length / this.pageSize);  
-  console.log(this.totalPages);
+}
+deleteRetailer(retailerId: string): void {
+  this.confirm.showConfirm("Are you sure want to delete?",
+    () => {
+      this.RetService.deleteRetailerById(retailerId).subscribe(
+        () => {
+          this.selectRetailer = this.selectRetailer.filter(retailer => retailer._id !== retailer._id);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    },
+    () => {
+      console.log("Deletion canceled");
+    }
+  );
 }
 }

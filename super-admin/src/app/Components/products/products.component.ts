@@ -42,7 +42,6 @@ loadProducts():void{
       this.selectedProducts=data;
       this.updateDisplayedProducts();
       this.isLoading = false;
-      console.log(this.selectedProducts);
       
     },
     error: (err) => {
@@ -55,7 +54,6 @@ getAllCategories():void{
   this.cateService.getAllCategories().subscribe({
     next: (data) => {
       this.categories = data;
-      console.log(this.categories);
     },
     error: (err) => {
       console.log(err);
@@ -67,11 +65,9 @@ searchProductCat():void {
   if (this.productCat.trim()!=="") {
     if(this.productCat.toLowerCase()==="all"){
       this.loadProducts()
-      console.log(this.productCat);
-      
 
     }
-    this.selectedProducts = this.products.filter(product => product.category === this.productCat.trim());
+    this.selectedProducts = this.products.filter(product => product.category.includes(this.productCat.trim()));
     this.totalPages = Math.ceil(this.selectedProducts.length / this.pageSize);  
     console.log(this.totalPages);
     
@@ -83,7 +79,7 @@ searchProductCat():void {
 }
 searchProductbrand():void {
   if (this.productBrand.trim()!=="") {
-    this.selectedProducts = this.products.filter(product => product.brand === this.productBrand.trim());
+    this.selectedProducts = this.products.filter(product => product.brand.includes(this.productBrand.trim()));
   }
   else{
     this.loadProducts()

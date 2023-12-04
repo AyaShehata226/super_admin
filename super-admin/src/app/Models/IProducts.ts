@@ -14,4 +14,6 @@ export interface IProduct {
   thumbnail:string;
   images:string[];
   img:string;
+  name:string;
+  email:string;
 }

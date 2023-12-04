@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class AdminAuthService {
   httpheader={}
+  flag:boolean=false;
   private adminLogged = new BehaviorSubject<boolean>(this.isAdminLog());
   constructor(private Http:HttpClient) {
     this.httpheader = {

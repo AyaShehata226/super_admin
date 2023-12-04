@@ -1,20 +1,8 @@
 <ng-container *ngIf="isLoading">
     <ngx-spinner 
     bdColor="rgba(0, 0, 0, 1)"
-    template="<img  class='img-fluid' src='assets/E-commerce image.gif' />">
+    template="<img  class='img-fluid w-75' src='assets/E-commerce image.gif' />">
   </ngx-spinner>
     Loading...
   </ng-container>
 <app-cards></app-cards>
-<div class="container">
-    <div class="row d-flex justify-content-evenly">
-        <div class="col-12 col-md-4 p-5">
-            <!-- <app-pie-chart></app-pie-chart> -->
-            <app-bar-chart></app-bar-chart>
-
-        </div>
-        <div class="col-12 col-md-6 mt-5 align-items-center">
-            <app-line-chart></app-line-chart>
-        </div>
-    </div>
-</div>

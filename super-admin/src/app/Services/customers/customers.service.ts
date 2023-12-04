@@ -15,12 +15,7 @@ export class CustomersService {
         const customers = res.customers;
       })) 
   }
-
-  getCustomerByEmail(email:string):Observable<Customers>{
-    return this.httpclient.get<Customers>(`${environment.BaseApiURL}/customer/${email}`)
-  }
   deleteCustomerId(customerId: number): Observable<void> {
-    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpclient.delete<void>(`${environment.BaseApiURL}/customer/admin/${customerId}`);
   }
 }
