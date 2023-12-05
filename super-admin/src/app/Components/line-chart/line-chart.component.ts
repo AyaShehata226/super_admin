@@ -8,20 +8,21 @@ import Chart from 'chart.js/auto';
 
 export class LineChartComponent implements OnInit {
   public chart: any;
-  @Input() Retailers: any;
-  @Input() products: any;
-  @Input() orders: any;
-  @Input() customers: any;
+  @Input() beauty: any;
+  @Input() Kids: any;
+  @Input() fashion: any;
+  @Input() grocery: any;
+  @Input() electronics: any;
   public x :number = .8;
   createChart(){
     this.chart = new Chart("MyLineChart", {
       type: 'bar', //this denotes tha type of chart
 
       data: {
-        labels: ['Retailers','Orders', 'Customers' , 'Products'],
+        labels: ['Beauty','Kids', 'Fashion' , 'Electronics','Groceries'],
         datasets: [{
           label: 'All Data  ',
-          data: [this.Retailers, this.orders , this.customers , this.products],
+          data: [this.beauty, this.Kids , this.fashion , this.electronics,this.grocery],
           backgroundColor: 'rgba(75, 192, 192)',
             borderColor: 'rgba(200, 100, 200, 1)',
             borderWidth: 1,

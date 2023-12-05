@@ -8,6 +8,8 @@ import { RetailersService } from 'src/app/Services/Retailers/retailers.service';
 import { Retailer } from 'src/app/Models/Retailers';
 import { OrdersService } from 'src/app/Services/orders/orders.service';
 import { Orders } from './../../Models/orders';
+import { CategoriesService } from 'src/app/Services/categories/categories.service';
+import { categories } from 'src/app/Models/categories';
 
 @Component({
   selector: 'app-cards',
@@ -15,10 +17,16 @@ import { Orders } from './../../Models/orders';
   styleUrls: ['./cards.component.scss'],
 
 })
-export class CardsComponent implements OnDestroy  {
+export class CardsComponent implements OnDestroy, OnInit  {
    public customers:Customers[]=[];
    public products:IProduct[]=[];
    public Retailers:Retailer[]=[];
+   public beauty: IProduct[]=[];
+   public Kids: IProduct[]=[];
+   public fashion: IProduct[]=[];
+   public electronics: IProduct[]=[];
+   public grocery: IProduct[]=[];
+   public categories : categories[] = []
   isLoading:boolean = false;
    public orders:Orders[]=[];
   productId:string ="";
@@ -28,7 +36,7 @@ export class CardsComponent implements OnDestroy  {
   totalPages: number=0;  // Total number of pages
   customerCart:IProduct[]=[];
   dataLoaded = false;
-  constructor(public orderSer:OrdersService,private spinner: NgxSpinnerService,public customersSer:CustomersService ,public prdService:ProductsService ,public RetService:RetailersService){
+  constructor(public orderSer:OrdersService,private cateService : CategoriesService,private spinner: NgxSpinnerService,public customersSer:CustomersService ,public prdService:ProductsService ,public RetService:RetailersService){
     this.loadOrders();
     this.loadRetailers();
     this.loadCustomers();
@@ -57,12 +65,31 @@ export class CardsComponent implements OnDestroy  {
     }
   })
 }
+getAllCategories():void{
+  this.cateService.getAllCategories().subscribe({
+    next: (data) => {
+      this.categories = data;
+      console.log(this.categories);
+      
+    },
+    error: (err) => {
+      console.log(err);
+    }
+  });
 
+}
 loadProducts():any{
   this.prdService.getAllProducts().subscribe({
     next: (data:any) => {
       this.products = data;
       this.isLoading = false;
+      
+   this.beauty = this.products?.filter(prd=> prd.category === 'Beauty')
+   this.electronics = this.products?.filter(prd => prd.category === 'electronics') 
+   this.grocery = this.products?.filter(prd => prd.category === 'groceries') 
+   this.fashion = this.products?.filter(prd => prd.category === 'fashion') 
+   this.Kids = this.products?.filter(prd => prd.category === 'Kids') 
+
     },
     error: (err) => {
       console.log(err);
@@ -80,7 +107,7 @@ loadProducts():any{
       console.log(err); 
     }
   })}
-
+  
   loadOrders():void{
     this.orderSer.getAllProducts().subscribe({
       next: (data:any) => {
@@ -95,5 +122,7 @@ loadProducts():any{
       }
     });
   }
-  
+  ngOnInit(): void {
+    this.getAllCategories()
+  }
 }

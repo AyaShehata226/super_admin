@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(private spinner: NgxSpinnerService){
     
   }
+ 
   ngOnInit(): void {
     this.isLoading = true;
   this.spinner.show();
