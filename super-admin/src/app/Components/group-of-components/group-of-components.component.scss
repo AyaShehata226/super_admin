@@ -57,3 +57,15 @@ a{
 .confirmation-dialog-title {
     color: red;
   }
+
+  .custom{
+    position: absolute;
+  }
+
+  @media (max-width: 768px){
+    .custom{
+        top:50%;
+        left: 20%;
+        width: full-width;
+    }
+  }
